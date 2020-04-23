@@ -36,5 +36,16 @@ imask = mask>0
 green = np.zeros_like(img, np.uint8)
 green[imask] = img[imask]
 
+
+#######pixel counter code
+size = img.size
+
+no_GREEN = cv2.countNonZero(mask)
+print(no_GREEN)
+frac_GREEN = np.divide((float(no_GREEN)),(int(size)))
+percent_GREEN = np.multiply((float(frac_GREEN)), 100)
+print('GREEN: ' + str(percent_GREEN) + '%')
+###############
+
 ## save 
 cv2.imwrite(name, green)
