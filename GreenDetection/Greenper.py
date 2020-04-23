@@ -38,8 +38,7 @@ green[imask] = img[imask]
 
 
 #######pixel counter code
-size = img.size
-
+size = 1024*1024
 no_GREEN = cv2.countNonZero(mask)
 print(no_GREEN)
 frac_GREEN = np.divide((float(no_GREEN)),(int(size)))
