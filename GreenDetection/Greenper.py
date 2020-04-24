@@ -23,7 +23,7 @@ import numpy as np
 abs_path = "/home/etherealenvy/github/ccbd-bangalore/GreenDetection/extreme_high_res1/extreme_high_res1/93708/60697.jpg"
 img = cv2.imread(abs_path)
 name = abs_path.split("/")[-2]+"/"+abs_path.split("/")[-1]
-# print(name)
+print(name)
 ## convert to hsv
 hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
@@ -38,15 +38,15 @@ green[imask] = img[imask]
 
 
 #######pixel counter code
-size = 662*482
+size = 1024*1024
 no_GREEN = cv2.countNonZero(mask)
 print(no_GREEN)
 frac_GREEN = np.divide((float(no_GREEN)),(int(size)))
 percent_GREEN = np.multiply((float(frac_GREEN)), 100)
 print('GREEN: ' + str(percent_GREEN) + '%')
-cv2.imwrite('green.jpg', green)
+# cv2.imwrite(name+".jpg", green)
 
 ###############
 
 ## save 
-cv2.imwrite(name, green)
+cv2.imwrite("green1.jpg", green)
