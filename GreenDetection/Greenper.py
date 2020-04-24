@@ -20,7 +20,7 @@ import cv2
 import numpy as np
 
 ## Read
-abs_path = "/home/etherealenvy/github/ccbd-bangalore/GreenDetection/Images_Vertical_1024px/23428/15175.jpg"
+abs_path = "/home/etherealenvy/github/ccbd-bangalore/GreenDetection/extreme_high_res1/extreme_high_res1/93708/60697.jpg"
 img = cv2.imread(abs_path)
 name = abs_path.split("/")[-2]+"/"+abs_path.split("/")[-1]
 # print(name)
@@ -29,7 +29,7 @@ hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
 ## mask of green (36,25,25) ~ (86, 255,255)
 # mask = cv2.inRange(hsv, (36, 25, 25), (86, 255,255))
-mask = cv2.inRange(hsv, (35, 25, 25), (160, 255,255))
+mask = cv2.inRange(hsv, (20, 25, 25), (160, 255,255))
 
 ## slice the green
 imask = mask>0
@@ -38,12 +38,14 @@ green[imask] = img[imask]
 
 
 #######pixel counter code
-size = 1024*1024
+size = 662*482
 no_GREEN = cv2.countNonZero(mask)
 print(no_GREEN)
 frac_GREEN = np.divide((float(no_GREEN)),(int(size)))
 percent_GREEN = np.multiply((float(frac_GREEN)), 100)
 print('GREEN: ' + str(percent_GREEN) + '%')
+cv2.imwrite('green.jpg', green)
+
 ###############
 
 ## save 
