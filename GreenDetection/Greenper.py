@@ -1,52 +1,50 @@
-# import cv2
-# import numpy as np
+# pylint: disable=no-member
 
-# img = cv2.imread('/home/etherealenvy/github/ccbd-bangalore/GreenDetection/Images_Vertical_1024px/23428/15175.jpg')
-# size = img.size
-
-# #replace green threshold in BGR form cause openCV reads numpy arrays in reverse order
-# GREEN_MIN = np.array([0,0,0], np.uint8)
-# GREEN_MAX = np.array([250, 255, 255], np.uint8)
-
-
-# dstr = cv2.inRange(img, GREEN_MIN, GREEN_MAX)
-# no_GREEN = cv2.countNonZero(dstr)
-
-# frac_GREEN = np.divide((float(no_GREEN)),(float(size)))
-# percent_GREEN = np.multiply((float(frac_GREEN)), 100)
-# print('GREEN: ' + str(percent_GREEN) + '%')
-
+import os
+import csv
 import cv2
 import numpy as np
 
 ## Read
-abs_path = "/home/etherealenvy/github/ccbd-bangalore/GreenDetection/extreme_high_res1/extreme_high_res1/93708/60697.jpg"
-img = cv2.imread(abs_path)
-name = abs_path.split("/")[-2]+"/"+abs_path.split("/")[-1]
-print(name)
-## convert to hsv
-hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+input_folder_path = "../../Images_Vertical_1024px"
+save_green_images = True
+output_folder_path = "../../Images_Vertical_1024px_green"
+output_csv = "greens.csv"
+with open(output_csv, "wt") as csvfile:
+    csvwriter = csv.writer(csvfile, delimiter=",")
+    for f in os.listdir(input_folder_path):
+        os.makedirs(os.path.join(output_folder_path, f), exist_ok=True)
+        if os.path.isdir(os.path.join(input_folder_path, f)):
+            for img_file in os.listdir(os.path.join(input_folder_path, f)):
 
-## mask of green (36,25,25) ~ (86, 255,255)
-# mask = cv2.inRange(hsv, (36, 25, 25), (86, 255,255))
-mask = cv2.inRange(hsv, (20, 25, 25), (160, 255,255))
+                img = cv2.imread(os.path.join(input_folder_path, f, img_file))
+                name = str(f) + "/" + str(img_file)
+                print("Processing File:", name)
+                ## convert to hsv
+                hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
-## slice the green
-imask = mask>0
-green = np.zeros_like(img, np.uint8)
-green[imask] = img[imask]
+                ## mask of green (36,25,25) ~ (86, 255,255)
+                # mask = cv2.inRange(hsv, (36, 25, 25), (86, 255,255))
+                mask = cv2.inRange(hsv, (20, 25, 25), (160, 255, 255))
+
+                ## slice the green
+                imask = mask > 0
+                green = np.zeros_like(img, np.uint8)
+                green[imask] = img[imask]
 
 
-#######pixel counter code
-size = 1024*1024
-no_GREEN = cv2.countNonZero(mask)
-print(no_GREEN)
-frac_GREEN = np.divide((float(no_GREEN)),(int(size)))
-percent_GREEN = np.multiply((float(frac_GREEN)), 100)
-print('GREEN: ' + str(percent_GREEN) + '%')
-# cv2.imwrite(name+".jpg", green)
+                #######pixel counter code
+                size = 1024*1024
+                no_GREEN = cv2.countNonZero(mask)
+                # print(no_GREEN)
+                frac_GREEN = np.divide((float(no_GREEN)), (int(size)))
+                percent_GREEN = np.multiply((float(frac_GREEN)), 100)
+                print('GREEN: ' + str(percent_GREEN) + '%')
+                csvwriter.writerow([f, img_file, percent_GREEN])
 
-###############
+                ###############
 
-## save 
-cv2.imwrite("green1.jpg", green)
+                ## save
+                if save_green_images:
+                    cv2.imwrite(os.path.join(output_folder_path, f, img_file), green)
+
