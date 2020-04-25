@@ -24,7 +24,7 @@ def index():
             reader = csv.reader(output_file, delimiter=" ")
             for row in reader:
                 outputs.append(row)
-        return render_template("index.html", outputs=outputs)
+        return render_template("index.html", outputs=outputs, green_percentage=green_percentage)
     return render_template("index.html")
 
 if __name__ == "__main__":
