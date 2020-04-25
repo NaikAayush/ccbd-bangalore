@@ -3,7 +3,7 @@
 
 import sys
 
-green_threshold = 65.0
+green_threshold = 50.0
 
 current_location = None
 current_green = 0

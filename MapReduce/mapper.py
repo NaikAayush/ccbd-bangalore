@@ -8,7 +8,7 @@ def map_task(row):
     pincode = row[4]
     locality = row[3]
     green = row[5]
-    return "{},{}| {}".format(pincode, locality, green)
+    return "{}| {}".format(pincode, green)
 
 if __name__ == "__main__":
     inp_file = sys.stdin
