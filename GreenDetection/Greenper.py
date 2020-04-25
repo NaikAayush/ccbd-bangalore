@@ -12,9 +12,20 @@ output_folder_path = "../../Images_Vertical_1024px_green_23428"
 os.makedirs(output_folder_path, exist_ok=True)
 output_csv = "greens.csv"
 size = 1024*1024
-with open(output_csv, "wt") as csvfile:
+with open(output_csv, "at+") as csvfile:
+    image_filenames = os.listdir(input_folder_path)
+    # print("original images list:", image_filenames)
+    csvfile.seek(0)
+    csvreader = csv.reader(csvfile, delimiter=",")
+    skipped_count = 0
+    for row in csvreader:
+        img_file, green = row
+        image_filenames.remove(img_file)
+        skipped_count += 1
+    print("Skipped {} images already in CSV".format(skipped_count))
+    # print("final images list:", image_filenames)
     csvwriter = csv.writer(csvfile, delimiter=",")
-    for img_file in os.listdir(input_folder_path):
+    for img_file in image_filenames:
         img = cv2.imread(os.path.join(input_folder_path, img_file))
         name = str(img_file)
         print("Processing File:", name)
