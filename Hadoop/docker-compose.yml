@@ -1,0 +1,88 @@
+version: "3"
+
+services:
+  namenode:
+    build: ./namenode
+    container_name: namenode
+    restart: always
+    ports:
+      - 9870:9870
+      - 9000:9000
+    volumes:
+      - hadoop_namenode:/hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=test
+    env_file:
+      - ./hadoop.env
+
+  resourcemanager:
+    build: ./resourcemanager
+    container_name: resourcemanager
+    restart: on-failure
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode1:9864 datanode2:9864"
+    env_file:
+      - ./hadoop.env
+    depends_on:
+      - namenode
+      - datanode1
+      - datanode2
+    ports:
+      - "8089:8088"
+
+  nodemanager1:
+    build: ./nodemanager
+    container_name: nodemanager
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode1:9864 datanode2:9864 resourcemanager:8088"
+    env_file:
+      - ./hadoop.env
+    ports:
+      - "8042:8042"
+    depends_on:
+      - namenode
+      - datanode1
+      - datanode2
+
+  historyserver:
+    build: ./historyserver
+    container_name: historyserver
+    restart: always
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode1:9864 datanode2:9864 resourcemanager:8088"
+    volumes:
+      - hadoop_historyserver:/hadoop/yarn/timeline
+    env_file:
+      - ./hadoop.env
+    depends_on:
+      - namenode
+      - datanode1
+      - datanode2
+    ports:
+      - "8188:8188"
+
+  datanode1:
+    build: ./datanode
+    container_name: datanode1
+    depends_on:
+      - namenode
+    volumes:
+      - hadoop_datanode1:/hadoop/dfs/data
+    env_file:
+      - ./hadoop.env
+
+  datanode2:
+    build: ./datanode
+    container_name: datanode2
+    depends_on:
+      - namenode
+    volumes:
+      - hadoop_datanode2:/hadoop/dfs/data
+    env_file:
+      - ./hadoop.env
+
+volumes:
+  hadoop_namenode:
+  hadoop_datanode1:
+  hadoop_datanode2:
+  hadoop_historyserver:
