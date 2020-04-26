@@ -2,7 +2,7 @@
 *__pycache__/
 mapper_out
 output.csv
-temp*
+temp_*
 main.csv0*
 output.csv*
 bigfile*

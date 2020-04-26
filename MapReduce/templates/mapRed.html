@@ -10,10 +10,15 @@
 </head>
 <body>
     <h1>Welcome</h1>
-    <form action="/" method="POST">
+    <form action={{ url_for("mapRed") }} method="POST">
         <input type="number" name="green_percentage" value={{ green_percentage or "50.0"  }} step="0.1" min="0.0" max="100">
+        Multithreaded: <input type="checkbox" {{ "checked" if multithreaded }} name="multithreaded" value="Yes">
         <input type="submit" value="Submit">
     <form>
+
+    {% if time_taken %}
+    <p>Time taken to execute Map Reduce: <b>{{ time_taken }}</b> seconds<p>
+    {% endif %}
 
     {% if outputs != None %}
     <table border>

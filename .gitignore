@@ -2,7 +2,7 @@
 *__pycache__/
 MapReduce/mapper_out
 MapReduce/output.csv
-MapReduce/temp*
+MapReduce/temp_*
 MapReduce/main.csv0*
 MapReduce/output.csv*
 MapReduce/bigfile*
