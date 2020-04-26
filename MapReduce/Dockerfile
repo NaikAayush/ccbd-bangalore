@@ -17,7 +17,7 @@ ENV YARN_HOME=/hadoop-3.1.3
 ENV PATH=$PATH:/hadoop-3.1.3/bin
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
 RUN apt-get update && apt-get install -y --no-install-recommends python3-pip 
-RUN pip3 install wheel flask gunicorn
+RUN pip3 install -r requirements.txt
 ADD . .
 CMD ["app.py"]
 ENTRYPOINT ["python3"]
