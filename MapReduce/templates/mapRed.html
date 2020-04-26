@@ -14,7 +14,9 @@
         <form action={{ url_for("mapRed") }} method="POST">
             <input type="range" class="custom-range" id="customRange1" name="green_percentage" value={{ green_percentage or "50.0"  }} step="0.1" min="0.0" max="100">
             <div id="printVal">{{ green_percentage+"%" or "50.0%"  }}</div>
-            Multithreaded:<input type="checkbox" {{ "checked" if multithreaded }} name="multithreaded" value="Yes" style="padding-left: 10%;">
+            <input id="multithreaded" type="checkbox" {{ "checked" if multithreaded }} name="multithreaded" value="Yes" style="padding-left: 10%;">
+            <label for="multithreaded">Multithreaded</label>
+            <br>
             <input type="submit" value="Submit">
         </form>
         </div>
