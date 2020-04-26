@@ -1,4 +1,5 @@
 *.swp
+<<<<<<< Updated upstream
 *__pycache__/
 MapReduce/mapper_out
 MapReduce/output.csv
@@ -9,3 +10,6 @@ MapReduce/bigfile*
 MapReduce/reduce_out_temp
 
 hadock/
+=======
+hadock
+>>>>>>> Stashed changes

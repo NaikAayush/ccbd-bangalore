@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
     
@@ -29,7 +29,7 @@
     <script>
         $('body').append('<div id="loading"><div class="loadingScreen"></div></div>');
         $(window).on('load', function(){
-        setTimeout(removeLoader, 2000); //wait for page load PLUS two seconds.
+        setTimeout(removeLoader, 10); //wait for page load PLUS two seconds.
         });
         function removeLoader(){
             $( "#loading" ).fadeOut(500, function() {
