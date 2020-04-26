@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Greenest areas in Bengaluru</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static',filename='css/mapred.css')}}">
 </head>
 <body>
     <h1>Welcome</h1>
     <form action={{ url_for("mapRed") }} method="POST">
-        <input type="number" name="green_percentage" value={{ green_percentage or "50.0"  }} step="0.1" min="0.0" max="100">
+        <input type="range" class="custom-range" id="customRange1" name="green_percentage" value={{ green_percentage or "50.0"  }} step="0.1" min="0.0" max="100">
+        <div id="printVal"></div>
         Multithreaded: <input type="checkbox" {{ "checked" if multithreaded }} name="multithreaded" value="Yes">
         <input type="submit" value="Submit">
     <form>
@@ -34,12 +35,19 @@
         {% endfor %}
     </table>
     {% endif %}
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
+        $(document).on('input', '#customRange1', function() {
+            if($(this).val!=NaN){
+            $('#printVal').html( $(this).val() );
+            }
+            else{
+                $('#printVal').html( 50.0 );
+            }
+        });
         $('body').append('<div id="loading"><div class="loadingScreen"></div></div>');
         $(window).on('load', function(){
-        setTimeout(removeLoader, 2000); //wait for page load PLUS two seconds.
+        setTimeout(removeLoader, 10); //wait for page load PLUS 10 microseconds.
         });
         function removeLoader(){
             $( "#loading" ).fadeOut(500, function() {
