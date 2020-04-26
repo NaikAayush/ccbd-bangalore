@@ -1,0 +1,5 @@
+*.swp
+*__pycache__/
+mapper_out
+output.csv
+

@@ -3,6 +3,9 @@
 
 import sys
 import csv
+import subprocess
+import multiprocessing as multiprocessing
+from reducer_rollingavg import sort_file
 
 def run_map_task(inp_file, out_file):
     def map_task(row):
@@ -11,9 +14,38 @@ def run_map_task(inp_file, out_file):
         green = row[5]
         return "{}| {}".format(pincode, green)
     reader = csv.reader(inp_file, delimiter=",", quotechar='"')
+    # print("Processing in process:", multiprocessing.current_process().name)
     for row in reader:
         map_out = map_task(row)
+        # print("Processing a row in process:", multiprocessing.current_process().name)
         print(map_out, file=out_file)
+        # out_file.write(map_out+"\n")
+        out_file.flush()
+
+def run_map_task_multi(inp_filename, num_files, out_file_prefix):
+    sort_file(inp_filename)
+    subprocess.call(["split", "--number=l/{}".format(num_files), "-d", inp_filename, inp_filename])
+    in_filenames = ["{0}{1:02d}".format(inp_filename, i) for i in range(num_files)]
+    # print("Input files:", in_filenames)
+    in_files = [open(filename, "rt") for filename in in_filenames]
+    out_filenames = ["{0}{1:02d}".format(out_file_prefix, i) for i in range(num_files)]
+    # print("Output files:", out_filenames)
+    out_files = [open(filename, "wt") for filename in out_filenames]
+    jobs = []
+    for in_file, out_file in zip(in_files, out_files):
+        # print("Starting process for input {}, output {}".format(in_file, out_file))
+        p = multiprocessing.Process(target=run_map_task, args=(in_file, out_file))
+        p.start()
+        jobs.append(p)
+    for job in jobs:
+        job.join()
+    print("Closing output files")
+    for out_file in out_files:
+        out_file.close()
+    print("Closing input files")
+    for in_file in in_files:
+        in_file.close()
+    return out_filenames
 
 if __name__ == "__main__":
     inp_file = sys.stdin
