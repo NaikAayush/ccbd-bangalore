@@ -19,5 +19,5 @@ ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
 RUN apt-get update && apt-get install -y --no-install-recommends python3-pip 
 RUN pip3 install wheel flask gunicorn
 ADD . .
-CMD ["MapReduce/app.py"]
+CMD ["app.py"]
 ENTRYPOINT ["python3"]
