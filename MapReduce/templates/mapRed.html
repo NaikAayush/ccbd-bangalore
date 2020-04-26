@@ -9,32 +9,43 @@
     <link rel="stylesheet" href="{{url_for('static',filename='css/mapred.css')}}">
 </head>
 <body>
-    <h1>Welcome</h1>
-    <form action={{ url_for("mapRed") }} method="POST">
-        <input type="range" class="custom-range" id="customRange1" name="green_percentage" value={{ green_percentage or "50.0"  }} step="0.1" min="0.0" max="100">
-        <div id="printVal"></div>
-        Multithreaded: <input type="checkbox" {{ "checked" if multithreaded }} name="multithreaded" value="Yes">
-        <input type="submit" value="Submit">
-    <form>
+        <div class="container">
+        <h3>Please slide the bar to adjust the threshold percentage</h3>
+        <form action={{ url_for("mapRed") }} method="POST">
+            <input type="range" class="custom-range" id="customRange1" name="green_percentage" value={{ green_percentage or "50.0"  }} step="0.1" min="0.0" max="100">
+            <div id="printVal"></div>
+            Multithreaded:<input type="checkbox" {{ "checked" if multithreaded }} name="multithreaded" value="Yes" style="padding-left: 10%;">
+            <input type="submit" value="Submit">
+        </form>
+        </div>
+        <br>
+        {% if time_taken %}
+        <p style="padding-left: 10%;">Time taken to execute Map Reduce: <b>{{ time_taken }}</b> seconds<p></p>
+        {% endif %}
+        <br>
 
-    {% if time_taken %}
-    <p>Time taken to execute Map Reduce: <b>{{ time_taken }}</b> seconds<p>
-    {% endif %}
+        {% if outputs != None %}
+        <div class="container">
+        <table border class="table table-sm table-dark table-hover table-striped">
+            <tr>
+                <th>Pincode</th>
+                <th>Green Percentage</th>
+            </tr>
+            {% for row in outputs %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+        {% endif %}
 
-    {% if outputs != None %}
-    <table border>
-        <tr>
-            <th>Pincode</th>
-            <th>Green Percentage</th>
-        </tr>
-        {% for row in outputs %}
-        <tr>
-            <td>{{ row[0] }}</td>
-            <td>{{ row[1] }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% endif %}
+            <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="/static/js/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="/static/js/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="/static/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
         $(document).on('input', '#customRange1', function() {
