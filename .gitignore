@@ -1,1 +1,10 @@
 *.swp
+*__pycache__/
+MapReduce/mapper_out
+MapReduce/output.csv
+MapReduce/temp*
+MapReduce/main.csv0*
+MapReduce/output.csv*
+MapReduce/bigfile*
+MapReduce/reduce_out_temp
+

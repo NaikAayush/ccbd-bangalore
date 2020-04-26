@@ -5,7 +5,10 @@ import sys
 import subprocess
 import multiprocessing as multiprocessing
 
-green_threshold = 50.0
+try:
+    green_threshold = sys.argv[1]
+except IndexError:
+    green_threshold = 50.0
 
 def run_reduce_task(green_threshold, inp_file, out_file, separator="| "):
     file_opened_here = False
