@@ -8,8 +8,12 @@ import reducer_rollingavg as reducer
 app = Flask(__name__)
 app.secret_key = "hmm secret key"
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def index():
+    return render_template("index.html")
+
+@app.route("/mapred", methods=["GET", "POST"])
+def mapRed():
     if request.method == "POST":
         start_time = time.time()
         green_percentage = request.form["green_percentage"]
@@ -36,12 +40,12 @@ def index():
             for row in reader:
                 outputs.append(row)
         time_taken = round(time.time() - start_time, 5)
-        return render_template("index.html",
+        return render_template("mapRed.html",
                                outputs=outputs,
                                green_percentage=str(green_percentage),
                                time_taken=time_taken,
                                multithreaded=multithreaded)
-    return render_template("index.html")
+    return render_template("mapRed.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')

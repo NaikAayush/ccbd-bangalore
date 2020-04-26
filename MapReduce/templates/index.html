@@ -1,33 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Greenest areas in Bengaluru</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    
 </head>
-<body>
-    <h1>Welcome</h1>
-    <form action="/" method="POST">
-        <input type="number" name="green_percentage" value={{ green_percentage or "50.0"  }} step="0.1" min="0.0" max="100">
-        Multithreaded: <input type="checkbox" {{ "checked" if multithreaded }} name="multithreaded" value="Yes">
-        <input type="submit" value="Submit">
-    <form>
+<body>   
+    <div class="homePage">
+        <video autoplay muted loop id="myVideo">
+            <source src="{{url_for('static',filename='assets/back.mp4')}}" type="video/mp4">
+        </video>
+        <div class="HeroPage">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">Welcome</h1>
+                    <p class="lead"> Find out the greenery in Bengaluru with our latest Hadoop MapReduce pipeline.</p>
+                    <a class="btn btn-primary btn-lg" href="{{url_for('mapRed')}}" role="button">Get Started</a>
+                </div>  
+            </div>
+        </div>
+    </div>
 
-    {% if time_taken %}
-    <p>Time taken to execute Map Reduce: <b>{{ time_taken }}</b> seconds<p>
-    {% endif %}
-
-    {% if outputs != None %}
-    <table border>
-        <tr>
-            <th>Pincode</th>
-            <th>Green Percentage</th>
-        </tr>
-        {% for row in outputs %}
-        <tr>
-            <td>{{ row[0] }}</td>
-            <td>{{ row[1] }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% endif %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $('body').append('<div id="loading"><div class="loadingScreen"></div></div>');
+        $(window).on('load', function(){
+        setTimeout(removeLoader, 2000); //wait for page load PLUS two seconds.
+        });
+        function removeLoader(){
+            $( "#loading" ).fadeOut(500, function() {
+            // fadeOut complete. Remove the loading div
+            $( "#loading" ).remove(); //makes page more lightweight 
+        });  
+        }
+    </script>
 </body>
 </html>
