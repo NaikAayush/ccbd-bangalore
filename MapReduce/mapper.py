@@ -9,10 +9,10 @@ from reducer_rollingavg import sort_file
 
 def run_map_task(inp_file, out_file):
     def map_task(row):
-        pincode = row[4]
-        locality = row[3]
+        loc1 = row[3]
+        loc2 = row[4]
         green = row[5]
-        return "{}| {}".format(pincode, green)
+        return "{},{}| {}".format(loc1, loc2, green)
     reader = csv.reader(inp_file, delimiter=",", quotechar='"')
     # print("Processing in process:", multiprocessing.current_process().name)
     for row in reader:

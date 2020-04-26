@@ -1,14 +1,12 @@
 #!/usr/bin/python3
 # pylint: disable=missing-function-docstring,global-statement,redefined-outer-name
 
+import os
 import sys
 import subprocess
 import multiprocessing as multiprocessing
 
-try:
-    green_threshold = sys.argv[1]
-except IndexError:
-    green_threshold = 50.0
+green_threshold = float(os.getenv("GREEN_THRESHOLD", 50.0))
 
 def run_reduce_task(green_threshold, inp_file, out_file, separator="| "):
     file_opened_here = False
@@ -32,7 +30,7 @@ def run_reduce_task(green_threshold, inp_file, out_file, separator="| "):
             if current_location:
                 green_percentage = current_green/current_count
                 if green_percentage > green_threshold:
-                    print("{} {}".format(current_location, green_percentage), file=outfile)
+                    print("{}| {}".format(current_location, green_percentage), file=outfile)
                     # print("Writing to file:", outfile, file=sys.stderr)
                     outfile.flush()
             current_location = pincode_locality
@@ -50,7 +48,7 @@ def run_reduce_task(green_threshold, inp_file, out_file, separator="| "):
     if current_location == last_location:
         green_percentage = current_green/current_count
         if green_percentage > green_threshold:
-            print("{} {}".format(current_location, green_percentage), file=out_file)
+            print("{}| {}".format(current_location, green_percentage), file=out_file)
             out_file.flush()
     # print("Processed {} rows in process {}".format(total_count,
                                                    # multiprocessing.current_process().name),
@@ -100,7 +98,7 @@ def run_reduce_task_multi(green_threshold, inp_filenames, num_files, out_filenam
     sort_file(temp_filename)
     with open(out_filename, "w", encoding="utf8") as out_file:
         with open(temp_filename, "r", encoding="utf8") as in_file:
-            run_reduce_task(green_threshold, in_file, out_file, separator=" ")
+            run_reduce_task(green_threshold, in_file, out_file)
 
 if __name__ == "__main__":
     inp_file = sys.stdin

@@ -1,0 +1,10 @@
+*.swp
+*__pycache__/
+mapper_out
+output.csv
+temp_*
+main.csv0*
+output.csv*
+bigfile*
+reduce_out_temp
+hadock

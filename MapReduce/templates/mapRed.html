@@ -13,9 +13,12 @@
         <h3>Please slide the bar to adjust the threshold percentage</h3>
         <form action={{ url_for("mapRed") }} method="POST">
             <input type="range" class="custom-range" id="customRange1" name="green_percentage" value={{ green_percentage or "50.0"  }} step="0.1" min="0.0" max="100">
-            <div id="printVal">{{ green_percentage+"%" or "50.0%"  }}</div>
-            <input id="multithreaded" type="checkbox" {{ "checked" if multithreaded }} name="multithreaded" value="Yes" style="padding-left: 10%;">
+            <div id="printVal">{{ (green_percentage or "50.0") + "%"  }}</div>
+            <input id="multithreaded" type="checkbox" {{ "checked" if multithreaded }} name="multithreaded" value="Yes" style="padding-left: 10%;" onclick="multiChanged(this)">
             <label for="multithreaded">Multithreaded</label>
+            <br>
+            <input id="hadoop" type="checkbox" {{ "checked" if hadoop }} name="hadoop" value="Yes" style="padding-left: 10%;" onclick="hadoopChanged(this)">
+            <label for="hadoop">Use Hadoop</label>
             <br>
             <input type="submit" value="Submit">
         </form>
@@ -68,6 +71,28 @@
             $( "#loading" ).remove(); //makes page more lightweight 
         });  
         }
+
+
+function hadoopChanged(checkbox) {
+    var multithreaded_checkbox = document.getElementById("multithreaded");
+    var hadoop_checkbox = document.getElementById("hadoop");
+    if (hadoop_checkbox.checked) {
+        multithreaded_checkbox.disabled = true;
+    }
+    else {
+        multithreaded_checkbox.disabled = false;
+    }
+}
+function multiChanged(checkbox) {
+    var multithreaded_checkbox = document.getElementById("multithreaded");
+    var hadoop_checkbox = document.getElementById("hadoop");
+    if (multithreaded_checkbox.checked) {
+        hadoop_checkbox.disabled = true;
+    }
+    else {
+        hadoop_checkbox.disabled = false;
+    }
+}
     </script>
 </body>
 </html>
