@@ -2,6 +2,13 @@
 
 The objective was to find the greenest part of Bengaluru using satellite images
 
+## The Team
+
+ - [Aayush](https://github.com/NaikAayush/)
+ - [Samyak S Sarnayak](https://github.com/Samyak2/)
+ - [Varun P](https://github.com/varunp2k/)
+ - [Pranav Kesavarapu](https://github.com/psiayn/)
+
 ## Overview
 
 We collected 5,38,000 images from Google Earth Engine API and processed them using OpenCV to find the percentage of green in them.
@@ -25,3 +32,28 @@ This was done in the following steps:
  3. Geocoding: Getting address for the coordinates
  4. Data cleaning and processing: Joining tables, removing missing values, etc
  5. Map Reduce: To average the green percentage for an area and filtering those with above a threshold.
+ 6. Web app: To showcase the results in real-time, we made a web app and hosted.
+
+### 1. Data Collection
+
+ - Used the Google Earth Engine API
+ - Initially we tested a few zoom levels and collected around 20,000 images. The results were not very good.
+ - With the maximum zoom level, collected 5,38,000 images
+
+### 2. Image Processing
+
+### 3. Geocoding
+
+### 4. Data Cleaning and Processing
+
+### 5. Map Reduce
+
+### 6. Web App
+
+## Results
+
+### Time taken for steps
+
+### Screenshots
+
+## References
