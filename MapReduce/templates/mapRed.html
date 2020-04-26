@@ -13,7 +13,7 @@
         <h3>Please slide the bar to adjust the threshold percentage</h3>
         <form action={{ url_for("mapRed") }} method="POST">
             <input type="range" class="custom-range" id="customRange1" name="green_percentage" value={{ green_percentage or "50.0"  }} step="0.1" min="0.0" max="100">
-            <div id="printVal"></div>
+            <div id="printVal">{{ green_percentage+"%" or "50.0%"  }}</div>
             Multithreaded:<input type="checkbox" {{ "checked" if multithreaded }} name="multithreaded" value="Yes" style="padding-left: 10%;">
             <input type="submit" value="Submit">
         </form>
@@ -50,10 +50,10 @@
     <script>
         $(document).on('input', '#customRange1', function() {
             if($(this).val!=NaN){
-            $('#printVal').html( $(this).val() );
+            $('#printVal').html( $(this).val() + "%" );
             }
             else{
-                $('#printVal').html( 50.0 );
+                $('#printVal').html("50.0%");
             }
         });
         $('body').append('<div id="loading"><div class="loadingScreen"></div></div>');
