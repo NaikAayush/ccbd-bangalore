@@ -21,21 +21,21 @@ def mapRed():
         print("Using green_percentage:", green_percentage)
         multithreaded = "multithreaded" in request.form
         if not multithreaded:
-            with open("main.csv", "rt",encoding="utf8") as input_file:
-                with open("output.csv", "wt",encoding="utf8") as output_file:
+            with open("main.csv", "rt", encoding="utf8") as input_file:
+                with open("output.csv", "wt", encoding="utf8") as output_file:
                     print("Running mapper")
-                    with open("mapper_out", "wt",encoding="utf8") as mapper_out:
+                    with open("mapper_out", "wt", encoding="utf8") as mapper_out:
                         mapper.run_map_task(input_file, mapper_out)
                     subprocess.call(["sort", "-k1,1", "mapper_out", "-o", "mapper_out"])
                     print("Runnnng reducer")
-                    with open("mapper_out", "rt",encoding="utf8") as mapper_out:
+                    with open("mapper_out", "rt", encoding="utf8") as mapper_out:
                         reducer.run_reduce_task(green_percentage, mapper_out, output_file)
         else:
             cores = 8
             mapper_outfiles = mapper.run_map_task_multi("main.csv", cores, "temp_mapper_out")
             reducer.run_reduce_task_multi(green_percentage, mapper_outfiles, cores, "output.csv")
         outputs = []
-        with open("output.csv", "rt",encoding="utf8") as output_file:
+        with open("output.csv", "rt", encoding="utf8") as output_file:
             reader = csv.reader(output_file, delimiter=" ")
             for row in reader:
                 outputs.append(row)

@@ -13,7 +13,7 @@ except IndexError:
 def run_reduce_task(green_threshold, inp_file, out_file, separator="| "):
     file_opened_here = False
     if isinstance(out_file, str):
-        out_file = open(out_file, "w",encoding="utf8")
+        out_file = open(out_file, "w", encoding="utf8")
         file_opened_here = True
     current_location = None
     current_green = 0
@@ -72,7 +72,7 @@ def run_reduce_task_multi(green_threshold, inp_filenames, num_files, out_filenam
         sort_job.communicate()
         sort_job.wait()
     print([job.poll() for job in sort_jobs])
-    inp_files = [open(filename, "r",encoding="utf8") for filename in inp_filenames]
+    inp_files = [open(filename, "r", encoding="utf8") for filename in inp_filenames]
     print("Reducer input files:", inp_filenames)
     out_filenames = ["{0}{1:02d}".format(out_filename, i) for i in range(num_files)]
     print("Reducer temp output files:", out_filenames)
@@ -88,8 +88,8 @@ def run_reduce_task_multi(green_threshold, inp_filenames, num_files, out_filenam
     for in_file in inp_files:
         in_file.close()
     temp_filename = "reduce_out_temp"
-    out_files = [open(filename, "r",encoding="utf8") for filename in out_filenames]
-    with open(temp_filename, "w",encoding="utf8") as temp_file:
+    out_files = [open(filename, "r", encoding="utf8") for filename in out_filenames]
+    with open(temp_filename, "w", encoding="utf8") as temp_file:
         for out_file in out_files:
             out_file.seek(0)
             temp_file.write(out_file.read())
@@ -98,8 +98,8 @@ def run_reduce_task_multi(green_threshold, inp_filenames, num_files, out_filenam
     for out_file in out_files:
         out_file.close()
     sort_file(temp_filename)
-    with open(out_filename, "w",encoding="utf8") as out_file:
-        with open(temp_filename, "r",encoding="utf8") as in_file:
+    with open(out_filename, "w", encoding="utf8") as out_file:
+        with open(temp_filename, "r", encoding="utf8") as in_file:
             run_reduce_task(green_threshold, in_file, out_file, separator=" ")
 
 if __name__ == "__main__":
