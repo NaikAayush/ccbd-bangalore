@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Reduce</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mapred.css.css">
+</head>
+<body>
+    
+    <!-- <form action="/" method="POST">
+        <input type="number" name="green_percentage" value={{ green_percentage or "50.0"  }} step="0.1" min="0.0" max="100">
+        <input type="submit" value="Submit">
+    <form>
+    
+    <div id="mapReduceOut">
+        {% if outputs != None %}
+        <table border>
+            <tr>
+                <th>Pincode</th>
+                <th>Green Percentage</th>
+            </tr>
+            {% for row in outputs %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div> -->
+    <h1>hi</h1>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $('body').append('<div id="loading"><div class="loadingScreen"></div></div>');
+        $(window).on('load', function(){
+        setTimeout(removeLoader, 2000); //wait for page load PLUS two seconds.
+        });
+        function removeLoader(){
+            $( "#loading" ).fadeOut(500, function() {
+            // fadeOut complete. Remove the loading div
+            $( "#loading" ).remove(); //makes page more lightweight 
+        });  
+        }
+    </script>
+</body>
+</html>
