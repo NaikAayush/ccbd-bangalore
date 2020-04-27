@@ -46,7 +46,20 @@ This was done in the following steps:
 
 ### 4. Data Cleaning and Processing
 
+After merging all the smaller datasets, we ended with two CSV files with nearly 5,38,000 rows - one with the file name and percentage of green and another with file name and locations (co-ordinates, sub-district and district). Since the data was collected from a rectangular area, there were some images from outside Bengaluru, removing those we got a final dataset with 440,461 rows.
+
+We then merged the two CSV files using pandas in python.
+
 ### 5. Map Reduce
+
+We implemented a custom MapReduce program in python. The mapper takes the required columns from the data and formats it correctly (in a key-value pair) for Hadoop or the custom program to sort it. The data is sorted based on the key (which is the first part of the mapper's output) before being passed to the reducer.
+The reducer groups the green percentages by the key (location) and averages it.
+
+Since there was a large amount of data and python, by default, is single-threaded we implemented a multi-threaded version of the MapReduce program using the multiprocessing library in python. The input data is first broken into smaller chunks, map and reduce steps are applied to the chunks individually (in parallel). The output chunks are then concatenated and reducer is applied to the concatenated output to get the final output.
+
+![Map Reduce Flowchart](imgs/MapReduce.png)
+
+The same mapper and reducer in python were used in the Hadoop Streaming API to perform MapReduce using Hadoop. The Hadoop version is slower since we have only one node in the container and there some overhead in starting and stopping the streaming job.
 
 ### 6. Web App
 
