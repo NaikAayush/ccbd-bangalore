@@ -49,7 +49,7 @@ This was done in the following steps:
 ### 5. Map Reduce
 
 ### 6. Web App
-
+The web app is a dockerized flask app built with HTML,CSS,Bootstrap and jQuery. It provides a responsive UI that works both on mobile and desktop browsers. The web app allows the user to control the threshold value of the MapReduce and even provides the user with options such as multithreading without Hadoop or running MapReduce with Hadoop. 
 ## Results
 
 ### Time taken for steps
