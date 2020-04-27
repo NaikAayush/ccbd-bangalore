@@ -32,7 +32,7 @@ def mapRed():
         groupby = request.form["groupby"]
         groupby_pincode = groupby == "pincode"
 
-        inp_filename = "FINAL_DATA_FILTERED.csv"
+        inp_filename = "FINAL.csv"
         if not hadoop:
             output_filename = "output.csv"
             if not multithreaded:
@@ -71,16 +71,17 @@ def mapRed():
             reader = csv.reader(output_file, delimiter="|")
             if groupby_pincode:
                 for row in reader:
-                    pincode = row[0]
+                    pincode = int(row[0])
                     locations = []
                     for sub_district, district in zip(pincode_locality_mapper.loc[[pincode]][1],
                                                       pincode_locality_mapper.loc[[pincode]][2]):
                         locations.append((sub_district, district))
-                    outputs.append([row[0], locations, row[1].strip()])
+                    green = round(float(row[1].strip()), 2)
+                    outputs.append([row[0], locations, green])
             else:
                 for row in reader:
                     pincode, sub_district, district = row[0].split(",")
-                    green = row[1].strip()
+                    green = round(float(row[1].strip()), 2)
                     outputs.append([pincode, [(sub_district, district)], green])
 
         time_taken = round(time.time() - start_time, 5)

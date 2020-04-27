@@ -8,6 +8,8 @@ main_new.csv0*
 FINAL_DATA_FILTERED.csv0*
 FINAL_DATA_FILTERED_1.csv
 FINAL_DATA_FILTERED_2.csv
+FINAL_DATA_FILTERED.csv
+output__incomplete.csv
 output.csv*
 bigfile*
 reduce_out_temp

@@ -10,13 +10,13 @@ from reducer import sort_file
 
 def run_map_task(inp_file, out_file, groupby_pincode=True):
     def map_task_pincode(row):
-        green = row[5]
+        green = row[3].strip() or "0.0"
         pincode = row[6]
         return "{}| {}".format(pincode, green)
     def map_task_locality(row):
-        loc1 = row[3]
-        loc2 = row[4]
-        green = row[5]
+        loc1 = row[4]
+        loc2 = row[5]
+        green = row[3].strip() or "0.0"
         pincode = row[6]
         return "{},{},{}| {}".format(pincode, loc1, loc2, green)
     reader = csv.reader(inp_file, delimiter=",", quotechar='"')
