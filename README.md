@@ -84,9 +84,9 @@ The web app is a dockerized flask app built with HTML,CSS,Bootstrap and jQuery. 
  - Geocoding: around 16 hours
  - Map Reduce:
     - On Heroku (with 1 virtual CPU):
-        - Single-threaded custom: 
-        - Multi-threaded custom:
-        - Hadoop (including overhead of starting and stopping)
+        - Single-threaded custom: 5 seconds
+        - Multi-threaded custom: 2.5 seconds
+        - Hadoop (including overhead of starting and stopping): 8.5 seconds
     - On a laptop with 4 cores 8 threads CPU:
         - Single-threaded custom: 3.77 seconds
         - Multi-threaded custom: 1.78 seconds
