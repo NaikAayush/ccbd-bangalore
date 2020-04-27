@@ -12,7 +12,7 @@
         <a class="btn btn-outline-primary" href="/" role="button" style="margin: 10px">Go Back</a>
         <div class="container">
         <h3>Please slide the bar to adjust the threshold percentage</h3>
-        <form action={{ url_for("mapRed") }} method="POST">
+        <form action={{ url_for("mapRed") }} method="POST" onsubmit="showLoading()">
             <input type="range" class="custom-range" id="customRange1" name="green_percentage" value={{ green_percentage or "50.0"  }} step="0.1" min="0.0" max="100">
             <div id="printVal">{{ (green_percentage or "50.0") + "%"  }}</div>
             <input id="multithreaded" type="checkbox" {{ "checked" if multithreaded }} name="multithreaded" value="Yes" style="padding-left: 10%;" onclick="multiChanged(this)">
@@ -20,6 +20,12 @@
             <br>
             <input id="hadoop" type="checkbox" {{ "checked" if hadoop }} name="hadoop" value="Yes" style="padding-left: 10%;" onclick="hadoopChanged(this)">
             <label for="hadoop">Use Hadoop</label>
+            <br>
+              <label for="groupby">Group By:</label>
+              <select class="form-control" name="groupby" id="groupby">
+                  <option value="pincode" {{ "selected" if groupby and groupby=="pincode" }}>Pincode (lower green values)</option>
+                  <option value="locality" {{ "selected" if groupby and groupby=="locality" }}>Locality (higher green values)</option>
+              </select>
             <br>
             <input type="submit" value="Submit" class="btn btn-primary">
         </form>
@@ -34,14 +40,24 @@
         <div class="container">
         <table border class="table table-sm table-dark table-hover table-striped">
             <tr>
-                <th>Location</th>
+                <th>Pincode</th>
+                <th>Sub-district</th>
+                <th>District</th>
                 <th>Green Percentage</th>
             </tr>
             {% for row in outputs %}
             <tr>
-                <td>{{ row[0] }}</td>
-                <td>{{ row[1] }}</td>
+                <td rowspan={{ row[1] | length }}>{{ row[0] }}</td>
+                <td>{{ row[1][0][0] }}</td>
+                <td>{{ row[1][0][1] }}</td>
+                <td rowspan={{ row[1] | length }}>{{ row[2] }}</td>
             </tr>
+                {% for locality in row[1][1:] %}
+                <tr>
+                <td>{{ locality[0] }}</td>
+                <td>{{ locality[1] }}</td>
+                </tr>
+                {% endfor %}
             {% endfor %}
         </table>
         </div>
@@ -68,6 +84,9 @@
         });  
         }
 
+function showLoading(obj) {
+    $('body').append('<div id="loading"><div class="loadingScreen"></div></div>');
+}
 
 function hadoopChanged(checkbox) {
     var multithreaded_checkbox = document.getElementById("multithreaded");
@@ -90,10 +109,5 @@ function multiChanged(checkbox) {
     }
 }
     </script>
-            <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="/static/js/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="/static/js/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="/static/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

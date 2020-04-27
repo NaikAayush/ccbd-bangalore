@@ -3,11 +3,16 @@ import time
 import subprocess
 import csv
 from flask import Flask, render_template, request, session
+import pandas as pd
+
 import mapper
 import reducer_rollingavg as reducer
 
 app = Flask(__name__)
 app.secret_key = "hmm secret key"
+
+pincode_locality_mapper = pd.read_csv("./pincode_locality_mapping.csv", header=None)
+pincode_locality_mapper.set_index(0, inplace=True)
 
 @app.route("/")
 def index():
@@ -24,6 +29,8 @@ def mapRed():
 
         multithreaded = "multithreaded" in request.form
         hadoop = "hadoop" in request.form
+        groupby = request.form["groupby"]
+        groupby_pincode = groupby == "pincode"
 
         inp_filename = "FINAL_DATA_FILTERED.csv"
         if not hadoop:
@@ -33,19 +40,28 @@ def mapRed():
                     with open("output.csv", "wt", encoding="utf8") as output_file:
                         print("Running mapper")
                         with open("mapper_out", "wt", encoding="utf8") as mapper_out:
-                            mapper.run_map_task(input_file, mapper_out)
+                            mapper.run_map_task(input_file, mapper_out, groupby_pincode)
                         subprocess.call(["sort", "-k1,1", "mapper_out", "-o", "mapper_out"])
                         print("Runnnng reducer")
                         with open("mapper_out", "rt", encoding="utf8") as mapper_out:
                             reducer.run_reduce_task(green_percentage, mapper_out, output_file)
             else:
                 cores = 8
-                mapper_outfiles = mapper.run_map_task_multi(inp_filename, cores, "temp_mapper_out")
-                reducer.run_reduce_task_multi(green_percentage, mapper_outfiles, cores, output_filename)
+                mapper_outfiles = mapper.run_map_task_multi(inp_filename,
+                                                            cores,
+                                                            "temp_mapper_out",
+                                                            groupby_pincode)
+                reducer.run_reduce_task_multi(green_percentage,
+                                              mapper_outfiles,
+                                              cores,
+                                              output_filename)
         else:
             env = os.environ.copy()
             env["GREEN_THRESHOLD"] = str(green_percentage)
-            hadoop_process = subprocess.Popen(["sh", "-c", "./run_hadoop.sh " + inp_filename], env=env)
+            env["GROUPBY_PINCODE"] = "1" if groupby_pincode else "0"
+            hadoop_process = subprocess.Popen(["sh", "-c",
+                                               "./run_hadoop.sh " + inp_filename],
+                                              env=env)
             hadoop_process.communicate()
             if hadoop_process.poll() is not None:
                 print("Hadoop is done with poll", hadoop_process.poll())
@@ -53,15 +69,30 @@ def mapRed():
         outputs = []
         with open(output_filename, "rt", encoding="utf8") as output_file:
             reader = csv.reader(output_file, delimiter="|")
-            for row in reader:
-                outputs.append(row)
+            if groupby_pincode:
+                for row in reader:
+                    pincode = row[0]
+                    locations = []
+                    print(pincode)
+                    for sub_district, district in zip(pincode_locality_mapper.loc[[pincode]][1],
+                                                      pincode_locality_mapper.loc[[pincode]][2]):
+                        locations.append((sub_district, district))
+                    print(locations)
+                    outputs.append([row[0], locations, row[1].strip()])
+            else:
+                for row in reader:
+                    pincode, sub_district, district = row[0].split(",")
+                    green = row[1].strip()
+                    outputs.append([pincode, [(sub_district, district)], green])
+
         time_taken = round(time.time() - start_time, 5)
         return render_template("mapRed.html",
                                outputs=outputs,
                                green_percentage=str(green_percentage),
                                time_taken=time_taken,
                                multithreaded=multithreaded,
-                               hadoop=hadoop)
+                               hadoop=hadoop,
+                               groupby=groupby)
     return render_template("mapRed.html", outputs=None)
 
 if __name__ == "__main__":
