@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Greenery of Bengaluru</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
@@ -18,8 +18,10 @@
         <div class="HeroPage">
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
-                    <h1 class="display-4">Welcome</h1>
-                    <p class="lead"> Find out the greenery in Bengaluru with our latest Hadoop MapReduce pipeline.</p>
+                    <p class="font-italic" style="margin-bottom: 0px;text-align: center;">"To sit in the shade on a fine day and look upon verdure is the most perfect refreshment"</p>
+                    <p class="font-italic" style="text-align: right;">- Jane Austen, "Mansfield Park"</p>
+                    <p class="lead" style="margin-bottom: 0px;">Have you ever had an inner feeling, a desire to know about the expanse of greenery that our beautiful city encompasses?</p>
+                    <p class="lead">If so, you have come to the right place.</p>
                     <p>We have collected over 5,38,000 satellite images of Bengaluru and using technologies like Geocoding and MapReduce, we present this pipeline which can find the greenest parts of Bengaluru.</p>
                     <a class="btn btn-primary btn-lg" href="{{url_for('mapRed')}}" onclick="showLoader(this)" role="button">Get Started</a>
                 </div>

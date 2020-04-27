@@ -11,32 +11,33 @@
 </head>
 <body>
         <a class="btn btn-outline-primary" href="/" role="button" style="margin: 10px">Go Back</a>
-        <div class="container">
-        <h3>Please slide the bar to adjust the threshold percentage</h3>
-        <p>Only those places with green cover more than the threshold will be shown</p>
-        <form action={{ url_for("mapRed") }} method="POST" onsubmit="showLoading()">
-            <input type="range" class="custom-range" id="customRange1" name="green_percentage" value={{ green_percentage or "50.0"  }} step="0.1" min="0.0" max="100">
-            <div id="printVal">{{ (green_percentage or "50.0") + "%"  }}</div>
-            <input id="multithreaded" type="checkbox" {{ "checked" if multithreaded }} name="multithreaded" value="Yes" style="padding-left: 10%;" onclick="multiChanged(this)">
-            <label for="multithreaded">Multithreaded</label>
-            <br>
-            <input id="hadoop" type="checkbox" {{ "checked" if hadoop }} name="hadoop" value="Yes" style="padding-left: 10%;" onclick="hadoopChanged(this)">
-            <label for="hadoop">Use Hadoop</label>
-            <br>
-              <label for="groupby">Group By:</label>
-              <select class="form-control" name="groupby" id="groupby">
-                  <option value="pincode" {{ "selected" if groupby and groupby=="pincode" }}>Pincode</option>
-                  <option value="locality" {{ "selected" if groupby and groupby=="locality" }}>Locality</option>
-              </select>
-            <br>
-            <input type="submit" value="Submit" class="btn btn-primary">
-        </form>
+        <div class="container" style="text-align: center;max-width: 500px;font-size: large;">
+        <h3 style="text-align: center;">Please slide the bar to adjust the threshold percentage</h3>
+        <p style="text-align: center;">Only those places with green cover more than the threshold will be shown</p>
+        <div class="container" style="text-align: center;">
+            <form action={{ url_for("mapRed") }} method="POST" onsubmit="showLoading()">
+                <input type="range" class="custom-range" id="customRange1" name="green_percentage" value={{ green_percentage or "50.0"  }} step="0.1" min="0.0" max="100">
+                <div id="printVal" style="text-align: center;">{{ (green_percentage or "50.0") + "%"  }}</div>
+                <br>
+                <input id="multithreaded" type="checkbox" {{ "checked" if multithreaded }} name="multithreaded" value="Yes" style="padding-left: 10%;" onclick="multiChanged(this)">
+                <label for="multithreaded" style="margin-right: 20px;">Multithreaded</label>
+                <input id="hadoop" type="checkbox" {{ "checked" if hadoop }} name="hadoop" value="Yes" style="padding-left: 10%;" onclick="hadoopChanged(this)">
+                <label for="hadoop">Use Hadoop</label>
+                <br>
+                  <label for="groupby">Group By:</label>
+                  <select class="form-control" name="groupby" id="groupby">
+                      <option value="pincode" {{ "selected" if groupby and groupby=="pincode" }}>Pincode</option>
+                      <option value="locality" {{ "selected" if groupby and groupby=="locality" }}>Locality</option>
+                  </select>
+                <br>
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </form>
+        </div>
         </div>
         <br>
         {% if time_taken %}
-        <p style="padding-left: 10%;">Time taken to execute Map Reduce: <b>{{ time_taken }}</b> seconds<p></p>
+        <p style="text-align: center; margin-bottom: 0px; font-family: courier;">Time taken to execute Map Reduce: <b>{{ time_taken }}</b> seconds<p></p>
         {% endif %}
-        <br>
 
         {% if outputs != None %}
         <div class="container">
