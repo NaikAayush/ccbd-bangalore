@@ -4,6 +4,8 @@ mapper_out
 output.csv
 temp_*
 main.csv0*
+main_new.csv0*
+FINAL_DATA_FILTERED.csv0*
 output.csv*
 bigfile*
 reduce_out_temp

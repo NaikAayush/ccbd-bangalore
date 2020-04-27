@@ -25,7 +25,7 @@ def mapRed():
         multithreaded = "multithreaded" in request.form
         hadoop = "hadoop" in request.form
 
-        inp_filename = "main_new.csv"
+        inp_filename = "FINAL_DATA_FILTERED.csv"
         if not hadoop:
             output_filename = "output.csv"
             if not multithreaded:
@@ -60,8 +60,9 @@ def mapRed():
                                outputs=outputs,
                                green_percentage=str(green_percentage),
                                time_taken=time_taken,
-                               multithreaded=multithreaded)
-    return render_template("mapRed.html")
+                               multithreaded=multithreaded,
+                               hadoop=hadoop)
+    return render_template("mapRed.html", outputs=None)
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
