@@ -100,4 +100,3 @@ The web app is a dockerized flask app built with HTML,CSS,Bootstrap and jQuery. 
 
 ![Map Reduce page](imgs/MapRed.png)
 
-## References
