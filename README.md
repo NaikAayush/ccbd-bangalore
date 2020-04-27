@@ -62,11 +62,30 @@ Since there was a large amount of data and python, by default, is single-threade
 The same mapper and reducer in python were used in the Hadoop Streaming API to perform MapReduce using Hadoop. The Hadoop version is slower since we have only one node in the container and there some overhead in starting and stopping the streaming job.
 
 ### 6. Web App
+
 The web app is a dockerized flask app built with HTML,CSS,Bootstrap and jQuery. It provides a responsive UI that works both on mobile and desktop browsers. The web app allows the user to control the threshold value of the MapReduce and even provides the user with options such as multithreading without Hadoop or running MapReduce with Hadoop. 
+
 ## Results
 
 ### Time taken for steps
 
+ - Downloading Satellite Images: around 16 hours
+ - Image Processing on all 5,38,000 images: around 2 hours (multi-threaded with 8 threads)
+ - Geocoding: around 16 hours
+ - Map Reduce:
+    - On Heroku (with 1 virtual CPU):
+        - Single-threaded custom: 
+        - Multi-threaded custom:
+        - Hadoop (including overhead of starting and stopping)
+    - On a laptop with 4 cores 8 threads CPU:
+        - Single-threaded custom: 3.77 seconds
+        - Multi-threaded custom: 1.78 seconds
+        - Hadoop (including overhead of starting and stopping): 8.8 seconds
+
 ### Screenshots
+
+![Home Page](imgs/Homepage.jpg)
+
+![Map Reduce page](imgs/MapRed.png)
 
 ## References
