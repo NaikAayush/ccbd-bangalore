@@ -6,7 +6,7 @@ from flask import Flask, render_template, request, session
 import pandas as pd
 
 import mapper
-import reducer_rollingavg as reducer
+import reducer
 
 app = Flask(__name__)
 app.secret_key = "hmm secret key"

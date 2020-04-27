@@ -5,8 +5,8 @@ import os
 import sys
 import csv
 import subprocess
-import multiprocessing as multiprocessing
-from reducer_rollingavg import sort_file
+import multiprocessing
+from reducer import sort_file
 
 def run_map_task(inp_file, out_file, groupby_pincode=True):
     def map_task_pincode(row):
