@@ -62,7 +62,7 @@ def mapRed():
                                time_taken=time_taken,
                                multithreaded=multithreaded,
                                hadoop=hadoop)
-    return render_template("mapRed.html")
+    return render_template("mapRed.html", outputs=None)
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')

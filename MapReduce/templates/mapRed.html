@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{url_for('static',filename='css/mapred.css')}}">
 </head>
 <body>
+        <a class="btn btn-outline-primary" href="/" role="button" style="margin: 10px">Go Back</a>
         <div class="container">
         <h3>Please slide the bar to adjust the threshold percentage</h3>
         <form action={{ url_for("mapRed") }} method="POST">
@@ -20,7 +21,7 @@
             <input id="hadoop" type="checkbox" {{ "checked" if hadoop }} name="hadoop" value="Yes" style="padding-left: 10%;" onclick="hadoopChanged(this)">
             <label for="hadoop">Use Hadoop</label>
             <br>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" class="btn btn-primary">
         </form>
         </div>
         <br>
@@ -33,7 +34,7 @@
         <div class="container">
         <table border class="table table-sm table-dark table-hover table-striped">
             <tr>
-                <th>Pincode</th>
+                <th>Location</th>
                 <th>Green Percentage</th>
             </tr>
             {% for row in outputs %}
