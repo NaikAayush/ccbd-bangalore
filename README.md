@@ -1,7 +1,8 @@
 # Bengaluru's Greenest Parts
 
 The objective was to find the greenest part of Bengaluru using satellite images
-website: https://ccbd-bangalore.herokuapp.com/
+
+Website: https://ccbd-bangalore.herokuapp.com/
 
 ## The Team
 
