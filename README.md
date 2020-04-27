@@ -41,16 +41,19 @@ This was done in the following steps:
  - With the maximum zoom level, collected 5,38,000 images. 
 
 ### 2. Image Processing
+
 - Used only OpenCV color filters
 - Went through many iterations of HSV/RGB values to find the best mask range
 - Calculated the number of green masked pixels
 - Divided this by total number of pixels to find the percentage
 
 ### 3. Geocoding
+
 - Taking the latitude and Longitude values from the generated images we make an API call.
 - Tested out multiple API's
 - Finalized with OpenStreetMaps API because it is free
 - There are other free API's but they are with constraints such as max 10000 requests per day.
+
 ### 4. Data Cleaning and Processing
 
 After merging all the smaller datasets, we ended with two CSV files with nearly 5,38,000 rows - one with the file name and percentage of green and another with file name and locations (co-ordinates, sub-district and district). Since the data was collected from a rectangular area, there were some images from outside Bengaluru, removing those we got a final dataset with 440,461 rows.
