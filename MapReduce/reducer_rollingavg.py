@@ -71,12 +71,9 @@ def run_reduce_task_multi(green_threshold, inp_filenames, num_files, out_filenam
         sort_job.wait()
     print([job.poll() for job in sort_jobs])
     inp_files = [open(filename, "r", encoding="utf8") for filename in inp_filenames]
-    print("Reducer input files:", inp_filenames)
     out_filenames = ["{0}{1:02d}".format(out_filename, i) for i in range(num_files)]
-    print("Reducer temp output files:", out_filenames)
     jobs = []
     for inp_file, out_file in zip(inp_files, out_filenames):
-        print("Starting process for input {}, output {}".format(inp_file, out_file))
         p = multiprocessing.Process(target=run_reduce_task,
                                     args=(0.0, inp_file, out_file))
         p.start()
@@ -91,7 +88,6 @@ def run_reduce_task_multi(green_threshold, inp_filenames, num_files, out_filenam
         for out_file in out_files:
             out_file.seek(0)
             temp_file.write(out_file.read())
-            # temp_file.write("\n")
             temp_file.flush()
     for out_file in out_files:
         out_file.close()

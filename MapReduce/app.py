@@ -73,11 +73,9 @@ def mapRed():
                 for row in reader:
                     pincode = row[0]
                     locations = []
-                    print(pincode)
                     for sub_district, district in zip(pincode_locality_mapper.loc[[pincode]][1],
                                                       pincode_locality_mapper.loc[[pincode]][2]):
                         locations.append((sub_district, district))
-                    print(locations)
                     outputs.append([row[0], locations, row[1].strip()])
             else:
                 for row in reader:

@@ -27,19 +27,15 @@ def run_map_task(inp_file, out_file, groupby_pincode=True):
         map_task = map_task_locality
     for row in reader:
         map_out = map_task(row)
-        # print("Processing a row in process:", multiprocessing.current_process().name)
         print(map_out, file=out_file)
-        # out_file.write(map_out+"\n")
         out_file.flush()
 
 def run_map_task_multi(inp_filename, num_files, out_file_prefix, groupby_pincode=True):
     sort_file(inp_filename)
     subprocess.call(["split", "--number=l/{}".format(num_files), "-d", inp_filename, inp_filename])
     in_filenames = ["{0}{1:02d}".format(inp_filename, i) for i in range(num_files)]
-    # print("Input files:", in_filenames)
     in_files = [open(filename, "r", encoding="utf8") for filename in in_filenames]
     out_filenames = ["{0}{1:02d}".format(out_file_prefix, i) for i in range(num_files)]
-    # print("Output files:", out_filenames)
     out_files = [open(filename, "w", encoding="utf8") for filename in out_filenames]
     jobs = []
     for in_file, out_file in zip(in_files, out_files):
