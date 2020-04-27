@@ -12,7 +12,8 @@ def run_map_task(inp_file, out_file):
         loc1 = row[3]
         loc2 = row[4]
         green = row[5]
-        return "{},{}| {}".format(loc1, loc2, green)
+        pincode = row[6]
+        return "{},{},{}| {}".format(pincode, loc1, loc2, green)
     reader = csv.reader(inp_file, delimiter=",", quotechar='"')
     # print("Processing in process:", multiprocessing.current_process().name)
     for row in reader:
