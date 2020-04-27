@@ -7,11 +7,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static',filename='css/mapred.css')}}">
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
 </head>
 <body>
         <a class="btn btn-outline-primary" href="/" role="button" style="margin: 10px">Go Back</a>
         <div class="container">
         <h3>Please slide the bar to adjust the threshold percentage</h3>
+        <p>Only those places with green cover more than the threshold will be shown</p>
         <form action={{ url_for("mapRed") }} method="POST" onsubmit="showLoading()">
             <input type="range" class="custom-range" id="customRange1" name="green_percentage" value={{ green_percentage or "50.0"  }} step="0.1" min="0.0" max="100">
             <div id="printVal">{{ (green_percentage or "50.0") + "%"  }}</div>
@@ -23,8 +25,8 @@
             <br>
               <label for="groupby">Group By:</label>
               <select class="form-control" name="groupby" id="groupby">
-                  <option value="pincode" {{ "selected" if groupby and groupby=="pincode" }}>Pincode (lower green values)</option>
-                  <option value="locality" {{ "selected" if groupby and groupby=="locality" }}>Locality (higher green values)</option>
+                  <option value="pincode" {{ "selected" if groupby and groupby=="pincode" }}>Pincode</option>
+                  <option value="locality" {{ "selected" if groupby and groupby=="locality" }}>Locality</option>
               </select>
             <br>
             <input type="submit" value="Submit" class="btn btn-primary">
@@ -62,6 +64,13 @@
         </table>
         </div>
         {% endif %}
+
+    <footer class="footer">
+      <div class="container">
+          <p class="text-muted">Made by <span class="iconify" data-icon="ion-logo-github" data-inline="false"></span> <a href="https://github.com/NaikAayush/">Aayush</a>, <a href="https://github.com/Samyak2/">Samyak</a>, <a href="https://github.com/varunp2k/">Varun</a>, <a href="https://github.com/psiayn/">Pranav</a></p>
+      </div>
+    </footer>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>

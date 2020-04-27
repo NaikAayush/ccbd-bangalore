@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
-    
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+
 </head>
 <body>   
     <div class="homePage">
@@ -22,6 +23,9 @@
                     <p>We have collected over 5,38,000 satellite images of Bengaluru and using technologies like Geocoding and MapReduce, we present this pipeline which can find the greenest parts of Bengaluru.</p>
                     <a class="btn btn-primary btn-lg" href="{{url_for('mapRed')}}" onclick="showLoader(this)" role="button">Get Started</a>
                 </div>
+      <div class="container" style="margin: 50px 0px 0px 0px;">
+          <p class="text-muted">Made by <span class="iconify" data-icon="ion-logo-github" data-inline="false"></span> <a href="https://github.com/NaikAayush/">Aayush</a>, <a href="https://github.com/Samyak2/">Samyak</a>, <a href="https://github.com/varunp2k/">Varun</a>, <a href="https://github.com/psiayn/">Pranav</a></p>
+      </div>
             </div>
         </div>
     </div>
