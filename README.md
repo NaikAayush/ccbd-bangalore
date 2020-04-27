@@ -49,7 +49,7 @@ This was done in the following steps:
 ### 3. Geocoding
 - Taking the latitude and Longitude values from the generated images we make an API call.
 - Tested out multiple API's
-- Finalized with OpenStreetMaps API because it is free
+- Finalized with MApBox API because it is free and gives us considerable amount of data
 - There are other free API's but they are with constraints such as max 10000 requests per day.
 ### 4. Data Cleaning and Processing
 
