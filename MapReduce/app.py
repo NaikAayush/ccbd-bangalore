@@ -83,7 +83,7 @@ def mapRed():
                     pincode, sub_district, district = row[0].split(",")
                     green = round(float(row[1].strip()), 2)
                     outputs.append([pincode, [(sub_district, district)], green])
-
+        outputs.sort(key=lambda x: x[2], reverse=True)
         time_taken = round(time.time() - start_time, 5)
         return render_template("mapRed.html",
                                outputs=outputs,
