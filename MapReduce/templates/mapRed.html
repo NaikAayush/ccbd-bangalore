@@ -17,7 +17,9 @@
         <div class="container" style="text-align: center;">
             <form action={{ url_for("mapRed") }} method="POST" onsubmit="showLoading()">
                 <input type="range" class="custom-range" id="customRange1" name="green_percentage" value={{ green_percentage or "50.0"  }} step="0.1" min="0.0" max="100">
-                <div id="printVal" style="text-align: left; position: relative; font-size: initial; bottom: 10px;">{{ (green_percentage or "50.0") + "%"  }}</div>
+                <div style="display: flex;">
+                    <span id="printVal" style="position: relative; font-size: initial; bottom: 10px;">{{ (green_percentage or "50.0") + "%"  }}</span>
+                </div>
                 <br>
                 <input id="multithreaded" type="checkbox" {{ "checked" if multithreaded }} name="multithreaded" value="Yes" style="padding-left: 10%;" onclick="multiChanged(this)">
                 <label for="multithreaded" style="margin-right: 20px;">Multithreaded</label>
