@@ -21,6 +21,10 @@ WORKDIR ccbd-bangalore
 RUN apt-get update && apt-get install -y --no-install-recommends python3-pip && rm -rf /var/lib/apt/lists/*
 COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt
-ADD . .
+ADD *.csv ./
+ADD static/ ./static
+ADD *.py ./
+ADD *.sh ./
+ADD templates/ ./templates
 CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:$PORT app:app"]
 
