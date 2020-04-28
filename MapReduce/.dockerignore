@@ -9,6 +9,8 @@ FINAL_DATA_FILTERED.csv0*
 FINAL_DATA_FILTERED_1.csv
 FINAL_DATA_FILTERED_2.csv
 FINAL_DATA_FILTERED.csv
+FINAL.csv0*
+*.ipynb
 output__incomplete.csv
 output.csv*
 bigfile*
