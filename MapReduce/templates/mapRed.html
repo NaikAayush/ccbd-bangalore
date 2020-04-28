@@ -17,7 +17,7 @@
         <div class="container" style="text-align: center;">
             <form action={{ url_for("mapRed") }} method="POST" onsubmit="showLoading()">
                 <input type="range" class="custom-range" id="customRange1" name="green_percentage" value={{ green_percentage or "50.0"  }} step="0.1" min="0.0" max="100">
-                <div id="printVal" style="text-align: center;">{{ (green_percentage or "50.0") + "%"  }}</div>
+                <div id="printVal" style="text-align: left; position: relative; font-size: initial; bottom: 10px;">{{ (green_percentage or "50.0") + "%"  }}</div>
                 <br>
                 <input id="multithreaded" type="checkbox" {{ "checked" if multithreaded }} name="multithreaded" value="Yes" style="padding-left: 10%;" onclick="multiChanged(this)">
                 <label for="multithreaded" style="margin-right: 20px;">Multithreaded</label>
@@ -75,12 +75,16 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
+        $('#printVal').html($('#customRange1').val() + "%");
+        $('#printVal').css("left", parseInt($('#customRange1').val()) - parseInt($('#customRange1').val())/20 + "%");
         $(document).on('input', '#customRange1', function() {
             if($(this).val!=NaN){
-            $('#printVal').html( $(this).val() + "%" );
+                $('#printVal').html( $(this).val() + "%" );
+                $('#printVal').css("left", parseInt($(this).val()) - parseInt($(this).val())/20 + "%");
             }
             else{
                 $('#printVal').html("50.0%");
+                $('#printVal').css("left", "50%");
             }
         });
         $('body').append('<div id="loading"><div class="loadingScreen"></div></div>');
@@ -91,33 +95,33 @@
             $( "#loading" ).fadeOut(500, function() {
             // fadeOut complete. Remove the loading div
             $( "#loading" ).remove(); //makes page more lightweight 
-        });  
+        });
         }
 
-function showLoading(obj) {
-    $('body').append('<div id="loading"><div class="loadingScreen"></div></div>');
-}
+        function showLoading(obj) {
+            $('body').append('<div id="loading"><div class="loadingScreen"></div></div>');
+        }
 
-function hadoopChanged(checkbox) {
-    var multithreaded_checkbox = document.getElementById("multithreaded");
-    var hadoop_checkbox = document.getElementById("hadoop");
-    if (hadoop_checkbox.checked) {
-        multithreaded_checkbox.disabled = true;
-    }
-    else {
-        multithreaded_checkbox.disabled = false;
-    }
-}
-function multiChanged(checkbox) {
-    var multithreaded_checkbox = document.getElementById("multithreaded");
-    var hadoop_checkbox = document.getElementById("hadoop");
-    if (multithreaded_checkbox.checked) {
-        hadoop_checkbox.disabled = true;
-    }
-    else {
-        hadoop_checkbox.disabled = false;
-    }
-}
+        function hadoopChanged(checkbox) {
+            var multithreaded_checkbox = document.getElementById("multithreaded");
+            var hadoop_checkbox = document.getElementById("hadoop");
+            if (hadoop_checkbox.checked) {
+                multithreaded_checkbox.disabled = true;
+            }
+            else {
+                multithreaded_checkbox.disabled = false;
+            }
+        }
+        function multiChanged(checkbox) {
+            var multithreaded_checkbox = document.getElementById("multithreaded");
+            var hadoop_checkbox = document.getElementById("hadoop");
+            if (multithreaded_checkbox.checked) {
+                hadoop_checkbox.disabled = true;
+            }
+            else {
+                hadoop_checkbox.disabled = false;
+            }
+        }
     </script>
 </body>
 </html>
