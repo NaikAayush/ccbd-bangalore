@@ -10,3 +10,4 @@ MapReduce/reduce_out_temp
 MapReduce/main_new.csv0*
 MapReduce/.ipynb_checkpoints/
 hadock/
+*.DS_Store
