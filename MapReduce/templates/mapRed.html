@@ -35,6 +35,11 @@
                 <br>
                 <input type="submit" value="Submit" class="btn btn-primary">
             </form>
+            {% if outputs != None %}
+            <form action={{ url_for("maps") }} method="POST" onsubmit="showLoading()">
+              <input type="submit" value="Click to Visualize" class="btn btn-primary">
+            </form>
+            {% endif %}
         </div>
         </div>
         <br>
@@ -43,6 +48,7 @@
         {% endif %}
 
         {% if outputs != None %}
+
         <div class="container">
         <table border class="table table-responsive-sm table-sm table-dark table-hover table-striped">
             <tr>
@@ -53,7 +59,8 @@
             </tr>
             {% for row in outputs %}
             <tr>
-                <td rowspan={{ row[1] | length }}>{{ row[0] }}</td>
+                <!--<td rowspan={{ row[1] | length }}><a href="/maps/{{ row[0] }}">{{ row[0] }}</a></td>-->
+                <td rowspan={{ row[1] | length }}>{{ row[0] }}</a></td>
                 <td>{{ row[1][0][0] }}</td>
                 <td>{{ row[1][0][1] }}</td>
                 <td rowspan={{ row[1] | length }}>{{ row[2] }}</td>
@@ -97,7 +104,7 @@
         function removeLoader(){
             $( "#loading" ).fadeOut(500, function() {
             // fadeOut complete. Remove the loading div
-            $( "#loading" ).remove(); //makes page more lightweight 
+            $( "#loading" ).remove(); //makes page more lightweight
         });
         }
 

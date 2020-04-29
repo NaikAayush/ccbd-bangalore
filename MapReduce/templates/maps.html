@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>Greenest areas in Bengaluru</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/mapred.css')}}">
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+    <title>Polygon on the Map</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/maps.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/map_styles.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/maptemplate.css" />
+    <script type="text/javascript" src="{{ url_for('static',filename='js/map-credentials.js')  }}"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+  </head>
+  <body id="markers-on-the-map">
+    <a class="btn btn-outline-primary" href="/mapred" role="button" style="margin: 10px">Go Back</a>
+<!---
+    <div class="page-header">
+        <h1>Polygon on the Map</h1>
+        <p>Display a map highlighting a region or area</p>
+    </div>
+    <p>This example displays a polygon covering part of Western Europe displayed on a moveable map.</p>
+--->
+    <div id="map"></div>
+<!---
+    <h3>Code</h3>
+    <p>A polygon is created using the <code>H.map.Polygon</code> class,
+      passing in an <code>H.geo.LineString</code> holding the vertices of the polygon. The look-and-feel of the
+      polygon can be altered by adding the <code>style</code> parameter</p>
+---><script>
+var varx= {{ varx | tojson }};
+if(varx=='pincode'){
+  var pincode={{  pincode  |  tojson  }};
+  var shapex={{ shape  |  tojson  }}
+}
+else {
+  var locality={{  locality  |  tojson  }};
+  var shapex={{ shape  |  tojson  }}
+}
+</script>
+    <!--<script type="text/javascript" src="{{ url_for('static',filename='/js/maps.js')  }}"></script>-->
+    <script type="text/javascript" src="{{ url_for('static',filename='/js/newmap.js')  }}"></script>
+  </body>
+</html>

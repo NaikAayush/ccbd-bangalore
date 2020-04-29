@@ -2,8 +2,10 @@ import os
 import time
 import subprocess
 import csv
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, jsonify
 import pandas as pd
+import json
+
 
 import mapper
 import reducer
@@ -31,7 +33,6 @@ def mapRed():
         hadoop = "hadoop" in request.form
         groupby = request.form["groupby"]
         groupby_pincode = groupby == "pincode"
-
         inp_filename = "FINAL.csv"
         if not hadoop:
             output_filename = "output.csv"
@@ -85,14 +86,56 @@ def mapRed():
                     outputs.append([pincode, [(sub_district, district)], green])
         outputs.sort(key=lambda x: x[2], reverse=True)
         time_taken = round(time.time() - start_time, 5)
+        no_of_outputs=len(outputs)
+        pincode=[x[0] for x in outputs]
+        locality=[x[1][0][0] for x in outputs]
+        green=[x[2] for x in outputs]
+        if groupby=='pincode':
+            session['varx'] = 'pincode'
+            session['pincode'] = pincode
+        elif groupby=='locality':
+            session['varx'] = 'locality'
+            session['locality'] = locality
         return render_template("mapRed.html",
                                outputs=outputs,
                                green_percentage=str(green_percentage),
                                time_taken=time_taken,
                                multithreaded=multithreaded,
                                hadoop=hadoop,
-                               groupby=groupby)
+                               groupby=groupby,
+                               no_of_outputs=no_of_outputs)
     return render_template("mapRed.html", outputs=None)
+
+@app.route("/maps",methods=["GET", "POST"])
+def maps():
+    if request.method == "POST":
+        varx = session.get('varx', None)
+        if varx == 'pincode':
+            pincode = session.get('pincode', None)
+            shape=[x for x in range(0,len(pincode))]
+            display=[x for x in range(0,len(pincode))]
+            df=pd.read_csv('pin_shape.csv')
+            for i in range(0,len(pincode)):
+                x=df.loc[df['postalCode'] == int(pincode[i])]
+                for j in x['Shape']:
+                    shape[i]=j
+                for k in x['Display']:
+                    display[i]=k
+            return render_template("maps.html",pincode=pincode,shape=shape,display=display,varx=varx,locality='')
+
+        elif varx == 'locality':
+            locality = session.get('locality', None)
+            shape=[x for x in range(0,len(locality))]
+            display=[x for x in range(0,len(locality))]
+            df=pd.read_csv('loc_shape.csv')
+            for i in range(0,len(locality)):
+                x=df.loc[df['locality'] == locality[i]]
+                for j in x['Shape']:
+                    shape[i]=j
+                for k in x['Display']:
+                    display[i]=k
+            return render_template("maps.html",locality=locality,shape=shape,display=display,varx=varx,pincode='')
+    return render_template("index.html", outputs=None)
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
