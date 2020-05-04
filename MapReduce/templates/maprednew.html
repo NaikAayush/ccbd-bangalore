@@ -228,20 +228,9 @@
                 $('#printVal').css("left", "50%");
             }
         });
-        $('body').append('<div id="loading"><div class="loadingScreen"></div></div>');
-        $(window).on('load', function(){
-            setTimeout(removeLoader, 200); //wait for page load PLUS 200 milliseconds.
-        });
-        function removeLoader(){
-            $( "#loading" ).fadeOut(500, function() {
-            // fadeOut complete. Remove the loading div
-            $( "#loading" ).remove(); //makes page more lightweight
-        });
-        }
 
         function showLoading(obj) {
-            $('body').append('<div id="loading" style="display: none"><div class="loadingScreen"></div></div>');
-            $("#loading").fadeIn(200);
+            $("#preloader").fadeIn(200);
         }
 
         function hadoopChanged(checkbox) {

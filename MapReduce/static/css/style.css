@@ -1921,7 +1921,7 @@ div.pswp__caption__center {
 	left: 0;
 	right: 0;
 	margin: auto;
-	background: url(images/loading-animation.gif) no-repeat center;
+	background: url(/static/images/loading-animation.gif) no-repeat center;
 }
 
 /*------------------------------------------------------------------
