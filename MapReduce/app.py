@@ -2,9 +2,8 @@ import os
 import time
 import subprocess
 import csv
-from flask import Flask, render_template, request, session, jsonify, redirect, url_for
+from flask import Flask, render_template, request, session, redirect, url_for
 import pandas as pd
-import json
 
 
 import mapper
@@ -15,6 +14,9 @@ app.secret_key = "hmm secret key"
 
 pincode_locality_mapper = pd.read_csv("./pincode_locality_mapping.csv", header=None)
 pincode_locality_mapper.set_index(0, inplace=True)
+
+pin_shape_df = pd.read_csv('pin_shape.csv')
+loc_shape_df = pd.read_csv('loc_shape.csv')
 
 @app.route("/")
 def index():
@@ -86,14 +88,14 @@ def mapRed():
                     outputs.append([pincode, [(sub_district, district)], green])
         outputs.sort(key=lambda x: x[2], reverse=True)
         time_taken = round(time.time() - start_time, 5)
-        no_of_outputs=len(outputs)
-        pincode=[x[0] for x in outputs]
-        locality=[x[1][0][0] for x in outputs]
-        green=[x[2] for x in outputs]
-        if groupby=='pincode':
+        no_of_outputs = len(outputs)
+        pincode = [x[0] for x in outputs]
+        locality = [x[1][0][0] for x in outputs]
+        green = [x[2] for x in outputs]
+        if groupby == 'pincode':
             session['varx'] = 'pincode'
             session['pincode'] = pincode
-        elif groupby=='locality':
+        elif groupby == 'locality':
             session['varx'] = 'locality'
             session['locality'] = locality
         return render_template("maprednew.html",
@@ -107,44 +109,48 @@ def mapRed():
     #return render_template("mapRed.html", outputs=None)
     return render_template("maprednew.html", outputs=None)
 
-@app.route("/maps",methods=["GET", "POST"])
+@app.route("/maps", methods=["GET", "POST"])
 def maps():
     varx = session.get('varx', None)
     if varx:
         if varx == 'pincode':
             pincode = session.get('pincode', None)
-            shape=[x for x in range(0,len(pincode))]
-            display=[x for x in range(0,len(pincode))]
-            df=pd.read_csv('pin_shape.csv')
-            for i in range(0,len(pincode)):
-                x=df.loc[df['postalCode'] == int(pincode[i])]
+            shape = list(range(0, len(pincode)))
+            display = list(range(0, len(pincode)))
+            for i, pinc in enumerate(pincode):
+                x = pin_shape_df.loc[pin_shape_df['postalCode'] == int(pinc)]
                 for j in x['Shape']:
-                    shape[i]=j
+                    shape[i] = j
                 for k in x['Display']:
-                    display[i]=k
-            return render_template("mapsnew.html",pincode=pincode,shape=shape,display=display,varx=varx,locality='')
+                    display[i] = k
+            return render_template("mapsnew.html",
+                                   pincode=pincode,
+                                   shape=shape,
+                                   display=display,
+                                   varx=varx,
+                                   locality='')
 
         elif varx == 'locality':
             locality = session.get('locality', None)
-            shape=[x for x in range(0,len(locality))]
-            display=[x for x in range(0,len(locality))]
-            df=pd.read_csv('loc_shape.csv')
-            for i in range(0,len(locality)):
-                x=df.loc[df['locality'] == locality[i]]
+            shape = list(range(0, len(locality)))
+            display = list(range(0, len(locality)))
+            for i, pinc in enumerate(locality):
+                x = loc_shape_df.loc[loc_shape_df['locality'] == locality[i]]
                 for j in x['Shape']:
-                    shape[i]=j
+                    shape[i] = j
                 for k in x['Display']:
-                    display[i]=k
-            return render_template("mapsnew.html",locality=locality,shape=shape,display=display,varx=varx,pincode='')
-    return redirect(url_for("new"))
+                    display[i] = k
+            return render_template("mapsnew.html",
+                                   locality=locality,
+                                   shape=shape,
+                                   display=display,
+                                   varx=varx,
+                                   pincode='')
+    return redirect(url_for("index"))
 
-@app.route("/new",methods=["GET", "POST"])
-def new():
-    return render_template('index2.html')
-
-@app.route("/newx",methods=["GET", "POST"])
-def newx():
-    return render_template('NewMapRed.html')
+@app.route("/about")
+def about():
+    return render_template("aboutus.html")
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')

@@ -2,14 +2,14 @@
 <html lang="en-US" class="no-js">
 	<head>
 
-		<title>Green Bengaluru</title>
+		<title>Home | Greenery of Bengaluru</title>
 
 		<!-- Meta Data -->
 		<meta http-equiv="content-type" content="text/html;charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<meta name="keywords" content="">
-		<meta name="author" content="Erilisdesign.com">
+		<meta name="author" content="Us">
 
 		<!-- CSS Global Compulsory -->
 		<link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
@@ -73,10 +73,10 @@
 							<!-- Header Nav -->
 							<nav class="header-block nav-block header-nav">
 								<ul class="nav">
-									<li class="active"><a href="{{url_for('index')}}" class="load-content">Home</a></li>
+									<li class="active"><a href="{{url_for('index')}}">Home</a></li>
 									<li><a href="{{url_for('mapRed')}}">Data</a></li>
 									<li><a href="{{url_for('maps')}}">Maps</a></li>
-									<li><a href="#portfolio" class="load-content">About Us</a></li>
+                                                                        <li><a href="{{url_for('about')}}">About Us</a></li>
 									<!-- <li><a href="#contact" class="load-content">Contact</a></li> -->
 								</ul>
 							</nav>
@@ -133,15 +133,14 @@
 									<div class="row">
 										<div class="col-lg-11 col-lg-offset-1 col-md-12">
 											<div class="jumbotron" style="padding-left: 5%;padding-right: 5%; background-color:#0000008c">
-												<p class="font-italic" style="margin-bottom: 0px;text-align: center;">"To sit in the shade on a fine day and look upon verdure is the most perfect refreshment"</p>
-		                    <p class="font-italic" style="text-align: right;">- Jane Austen, "Mansfield Park"</p>
+												<p class="font-italic" style="margin-bottom: 0px; text-align: center; font-size: initial;">"To sit in the shade on a fine day and look upon verdure is the most perfect refreshment"</p>
+		                    <p class="font-italic" style="text-align: right; font-size: initial;">- Jane Austen, "Mansfield Park"</p>
 										<!-- <div class="countdown animated onstart" data-animation="fadeInUp" data-animation-delay="300" data-countdown="2017/05/25 12:00:00"></div> -->
 										<h2 class="font-bold text-white" style=>Have you ever had an inner feeling,<br/> a desire to know about the expanse of greenery <br/>that our beautiful city encompasses?</h2>
 
 											<p class="lead text-white animated onstart" data-animation="fadeInUp" data-animation-delay="600">We have collected over<strong> 5,38,000</strong> satellite images of<strong> Bengaluru</strong> and using technologies like Geocoding and MapReduce, we present this pipeline which can find the greenest parts of Bengaluru.</p>
 											<div class="btn-group-alt animated onstart" data-animation="fadeInUp" data-animation-delay="900">
-												<a href="#subscribe-modal" class="btn btn-white open-popup-link">Know More</a>
-												<a href="{{url_for('mapRed')}}" class="btn btn-white btn-border">Continue</a>
+												<a href="{{ url_for('mapRed') }}" class="btn btn-white">Continue</a>
 											</div>
 										</div>
 									</div>

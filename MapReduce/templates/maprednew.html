@@ -2,14 +2,14 @@
 <html lang="en-US" class="no-js">
 	<head>
 
-		<title>Green Bengaluru</title>
+		<title>Data | Greenery of Bengaluru</title>
 
 		<!-- Meta Data -->
 		<meta http-equiv="content-type" content="text/html;charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
 		<meta name="keywords" content="">
-		<meta name="author" content="Erilisdesign.com">
+		<meta name="author" content="Us">
 
 		<!-- CSS Global Compulsory -->
 		<link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
@@ -27,6 +27,7 @@
 		<link rel="stylesheet" href="{{url_for('static',filename='css/photoswipe/photoswipe.css')}}">
 		<link rel="stylesheet" href="{{url_for('static',filename='css/photoswipe/default-skin/default-skin.css')}}">
 		<link rel="stylesheet" href="{{url_for('static',filename='css/custom.css')}}">
+                <link rel="stylesheet" href="{{url_for('static',filename='css/mapred.css')}}">
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -60,7 +61,7 @@
 		<div class="main-container">
 
 			<!-- Main Header -->
-			<<header class="main-header header-light header-mobile-light menu-dark menu-mobile-dark">
+			<header class="main-header header-light header-mobile-light menu-dark menu-mobile-dark">
 				<div class="header-container">
 					<div class="header-content">
 						<div class="header-el">
@@ -83,7 +84,7 @@
                   <li><a href="{{url_for('index')}}">Home</a></li>
                   <li class="active"><a href="{{url_for('mapRed')}}">Data</a></li>
 									<li><a href="{{url_for('maps')}}">Maps</a></li>
-									<li><a href="#portfolio" class="load-content">About Us</a></li>
+                                                                        <li><a href="{{url_for('about')}}">About Us</a></li>
 									<!-- <li><a href="#contact" class="load-content">Contact</a></li> -->
 								</ul>
 							</nav>
@@ -206,14 +207,14 @@
 		</div>
 
 		<!-- JS -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
-    <script type="text/javascript" src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
-		<script type="text/javascript" src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
-		<script type="text/javascript" src="{{url_for('static',filename='js/plugins.js')}}"></script>
-		<script type="text/javascript" src="{{url_for('static',filename='js/photoswipe.min.js')}}"></script>
-		<script type="text/javascript" src="{{url_for('static',filename='js/photoswipe-ui-default.min.js')}}"></script>
-		<script type="text/javascript" src="{{url_for('static',filename='js/photoswipe-main.js')}}"></script>
-		<script type="text/javascript" src="{{url_for('static',filename='js/main.js')}}"></script>
+                <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+                <script type="text/javascript" src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+                <script type="text/javascript" src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+                <script type="text/javascript" src="{{url_for('static',filename='js/plugins.js')}}"></script>
+                <script type="text/javascript" src="{{url_for('static',filename='js/photoswipe.min.js')}}"></script>
+                <script type="text/javascript" src="{{url_for('static',filename='js/photoswipe-ui-default.min.js')}}"></script>
+                <script type="text/javascript" src="{{url_for('static',filename='js/photoswipe-main.js')}}"></script>
+                <script type="text/javascript" src="{{url_for('static',filename='js/main.js')}}"></script>
     <script>
         $('#printVal').html($('#customRange1').val() + "%");
         $('#printVal').css("left", parseInt($('#customRange1').val()) - parseInt($('#customRange1').val())/20 + "%");
@@ -229,7 +230,7 @@
         });
         $('body').append('<div id="loading"><div class="loadingScreen"></div></div>');
         $(window).on('load', function(){
-            setTimeout(removeLoader, 100); //wait for page load PLUS 10 microseconds.
+            setTimeout(removeLoader, 200); //wait for page load PLUS 200 milliseconds.
         });
         function removeLoader(){
             $( "#loading" ).fadeOut(500, function() {
@@ -239,7 +240,8 @@
         }
 
         function showLoading(obj) {
-            $('body').append('<div id="loading"><div class="loadingScreen"></div></div>');
+            $('body').append('<div id="loading" style="display: none"><div class="loadingScreen"></div></div>');
+            $("#loading").fadeIn(200);
         }
 
         function hadoopChanged(checkbox) {

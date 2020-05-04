@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+    <head>
+
+        <title>About Us | Greenery of Bengaluru</title>
+
+        <!-- Meta Data -->
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="author" content="Us">
+
+        <!-- CSS Global Compulsory -->
+        <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+        <!-- <link rel="stylesheet" href="{{url_for('static',filename='css/yush.min.css')}}">
+            <link rel="stylesheet" href="{{url_for('static',filename='css/yush.css')}}"> -->
+
+            <!-- CSS Implementing Plugins -->
+            <!-- <link rel="stylesheet" href="{{url_for('static',filename='css/ionicons.min.css')}}" type="text/css"> -->
+            <link rel="stylesheet" href="{{url_for('static',filename='css/animate.min.css')}}" type="text/css">
+            <link rel="stylesheet" href="{{url_for('static',filename='css/flexslider.css')}}" type="text/css">
+            <link rel="stylesheet" href="{{url_for('static',filename='css/magnific-popup.css')}}" type="text/css">
+            <link rel="stylesheet" href="{{url_for('static',filename='css/vegas.min.css')}}" type="text/css">
+            <!-- <link rel="stylesheet" href="{{url_for('static',filename='css/jquery.mCustomScrollbar.min.css')}}"> -->
+            <link rel="stylesheet" href="{{url_for('static',filename='css/photoswipe/photoswipe.css')}}">
+            <link rel="stylesheet" href="{{url_for('static',filename='css/photoswipe/default-skin/default-skin.css')}}">
+            <link rel="stylesheet" href="{{url_for('static',filename='css/custom.css')}}">
+            <link rel="stylesheet" href="{{url_for('static',filename='css/mapred.css')}}">
+
+            <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+            <!--[if lt IE 9]>
+                <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+                <script src="js/respond.min.js"></script>
+            <![endif]-->
+
+            <!--[if lt IE 11]>
+                <link rel="stylesheet" type="text/css" href="css/ie.css">
+            <![endif]-->
+
+            <!-- Fonts -->
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,300i,400,400i,700,700i" rel="stylesheet">
+
+            <!-- JS -->
+            <script type="text/javascript" src="{{url_for('static',filename='js/modernizr.js')}}"></script>
+
+            <!-- Faviconss -->
+            <link rel="shortcut icon" href="images/favicon.ico">
+            <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+            <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+            <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+            <style>
+.icon-thing {
+    color: white;
+}
+.about-team {
+    font-size: initial;
+}
+.about-project {
+    font-size: initial;
+}
+            </style>
+    </head>
+    <body>
+
+        <div id="preloader">
+            <div id="loading-animation"></div>
+        </div>
+
+        <div class="main-container">
+
+            <!-- Main Header -->
+            <header class="main-header header-light header-mobile-light menu-dark menu-mobile-dark">
+                <div class="header-container">
+                    <div class="header-content">
+                        <div class="header-el">
+                            <div class="topline"></div>
+                            <div class="header-block brand-block">
+                                <!-- Header Logo -->
+                                <div class="logo-block">
+                                    <a class="header-logo load-content" href="#home">
+                                        <img src="{{url_for('static',filename='images/tree.png')}}" alt="" class="logo-light" />
+                                        <img src="{{url_for('static',filename='images/tree.png')}}" alt="" class="logo-dark" />
+                                    </a>
+                                </div>
+                                <button type="button" class="nav-toggle">
+                                    <span></span>
+                                </button>
+                            </div>
+                            <!-- Header Nav -->
+                            <nav class="header-block nav-block header-nav">
+                                <ul class="nav">
+                                    <li><a href="{{url_for('index')}}">Home</a></li>
+                                    <li><a href="{{url_for('mapRed')}}">Data</a></li>
+                                    <li><a href="{{url_for('maps')}}">Maps</a></li>
+                                    <li class="active"><a href="{{url_for('about')}}" class="load-content">About Us</a></li>
+                                    <!-- <li><a href="#contact" class="load-content">Contact</a></li> -->
+                                </ul>
+                            </nav>
+                            <div class="bottomline"></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="function-buttons style-light">
+
+                <!-- Close Block Button -->
+                <a href="#home" class="function-btn close-block load-content"><i class="ion-android-close"></i></a>
+
+                <!-- Back To Top Block Button -->
+                <a href="#" class="function-btn backtotop-block"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+
+            </div>
+
+            <!-- Global Overlay -->
+            <div class="global-overlay zoom-onload">
+                <div class="overlay">
+                    <div class="overlay-wrapper">
+                        <!-- Overlay Background -->
+                        <div class="overlay-inner cover-background" style="background-image: url('{{url_for('static',filename='images/forest.jpg')}}');"></div>
+
+                        <div class="overlay-inner background-dark-5 opacity-20"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frame Overlay -->
+            <div class="overlay-frame">
+                <div class="of-top"></div>
+                <div class="of-bottom"></div>
+                <div class="of-right"></div>
+            </div>
+
+            <!-- Home Block -->
+
+
+            <!-- Side Block -->
+            <div class="ed-homeblock" style="overflow:scroll;">
+                <div class="jumbotron" style=" background-color:#0000008c;margin-bottom:0rem;min-height: 100vh;max-height: auto; ">
+                    <div class="center" style="background-image: url('{{url_for('static',filename='images/forest.jpg')}}');"></div>
+                    <div class="sideblock-container">
+                        <section id="about" class="section" style="padding:0px">
+                            <div class="container">
+                                <h1>About Us</h1>
+                                <h3>We are a team of enthusiastic students from PES University, Bengaluru</h3>
+                                <div class="about-team">
+                                    <h2>The Team:</h2>
+                                    <ul>
+                                        <li><b>Aayush</b>
+                                            <a class="icon-thing" target="_blank" href="https://github.com/NaikAayush/"><span class="iconify" data-icon="ion-logo-github" data-inline="false"></span></a>
+                                            <a class="icon-thing" target="_blank" href="https://www.linkedin.com/in/aayush-naik-b96a90134/"><span class="iconify" data-icon="ant-design:linkedin-filled" data-inline="false"></span></a>
+                                            <p>Pro</p>
+                                        </li>
+                                        <li><b>Samyak</b>
+                                            <a class="icon-thing" target="_blank" href="https://github.com/Samyak2/"><span class="iconify" data-icon="ion-logo-github" data-inline="false"></span></a>
+                                            <a class="icon-thing" target="_blank" href="https://www.linkedin.com/in/samyaks/"><span class="iconify" data-icon="ant-design:linkedin-filled" data-inline="false"></span></a>
+                                            <a class="icon-thing" target="_blank" href="https://samyak2.github.io/"><span class="iconify" data-icon="whh:website" data-inline="false"></span></a>
+                                            <p>Not pro</p>
+                                        </li>
+                                        <li><b>Varun</b>
+                                            <a class="icon-thing" target="_blank" href="https://github.com/varunp2k/"><span class="iconify" data-icon="ion-logo-github" data-inline="false"></span></a>
+                                            <a class="icon-thing" target="_blank" href="https://www.linkedin.com/in/varunp2k/"><span class="iconify" data-icon="ant-design:linkedin-filled" data-inline="false"></span></a>
+                                            <p>Pro</p>
+                                        </li>
+                                        <li><b>Pranav</b>
+                                            <a class="icon-thing" target="_blank" href="https://github.com/psiayn/"><span class="iconify" data-icon="ion-logo-github" data-inline="false"></span></a>
+                                            <a class="icon-thing" target="_blank" href="https://www.linkedin.com/in/pranav-kesavarapu-13b193135/"><span class="iconify" data-icon="ant-design:linkedin-filled" data-inline="false"></span></a>
+                                            <p>Pro</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="about-project">
+                                    <h2>The Project</h2>
+                                    <p style="margin-bottom: 0px">
+                                        This project was completed as part of an assignment for Centre for Cloud Computing and Big Data (CCBD) at PES University.
+                                    </p>
+                                    <p>The data was last updated in April 2020.</p>
+                                    <h2>Technical details</h2>
+                                    <h3>Overview</h3>
+                                    <p>We collected 5,38,000 images from Google Earth Engine API and processed them using OpenCV to find the percentage of green in them. To get the location details for the coordinates of the image, a Geocoding API was used. The two datasets (image name with percentage of green and image name with coordinates and location) were joined using Pandas in python. The resulting data was used for a MapReduce task. The output of the MapReduce task is a list of locations along with their percentage of green (only those areas with more green than a given threshold are included). We also made a web app to demo this in real-time and hosted it on Heroku, a cloud platform. The application was containerized using Docker while deploying.</p>
+                                    <p>Since there was a huge amount of data, we made using of multi-threading. The OpenCV script uses multi-threading (using the multi-processing python library) to process a number of images in parallel and combines the output at the end. The final time was reduced to nearly 2 hours for processing all 5,38,000 images. We also use multi-threading to perform a number of API calls in parallel to reduce the time taken.</p>
+                                    <p>A custom Map Reduce program was implemented in python to be used in the web app. This implementation also supports multi-threading to break down the input into smaller chunks and apply map-reduce individually and then apply the reduce step again to get the final output. This map reduce program takes around 10 seconds for the single-threaded version and around 4 seconds for the multi-threaded version (4 threads) to process a file with almost a million lines.<p>
+                                    <p>A 2-node Hadoop cluster was set up using Docker for performing Map Reduce tasks on a large scale.</p>
+                                </div>
+                            </div>
+                        </section>
+
+
+                    </div>
+
+                    <!-- JS -->
+                    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+                    <script type="text/javascript" src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+                    <script type="text/javascript" src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+                    <script type="text/javascript" src="{{url_for('static',filename='js/plugins.js')}}"></script>
+                    <script type="text/javascript" src="{{url_for('static',filename='js/photoswipe.min.js')}}"></script>
+                    <script type="text/javascript" src="{{url_for('static',filename='js/photoswipe-ui-default.min.js')}}"></script>
+                    <script type="text/javascript" src="{{url_for('static',filename='js/photoswipe-main.js')}}"></script>
+                    <script type="text/javascript" src="{{url_for('static',filename='js/main.js')}}"></script>
+                    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+                    <script>
+                        $('#printVal').html($('#customRange1').val() + "%");
+$('#printVal').css("left", parseInt($('#customRange1').val()) - parseInt($('#customRange1').val())/20 + "%");
+$(document).on('input', '#customRange1', function() {
+    if($(this).val!=NaN){
+        $('#printVal').html( $(this).val() + "%" );
+        $('#printVal').css("left", parseInt($(this).val()) - parseInt($(this).val())/20 + "%");
+    }
+    else{
+        $('#printVal').html("50.0%");
+        $('#printVal').css("left", "50%");
+    }
+});
+$('body').append('<div id="loading"><div class="loadingScreen"></div></div>');
+$(window).on('load', function(){
+    setTimeout(removeLoader, 200); //wait for page load PLUS 200 milliseconds.
+});
+function removeLoader(){
+    $( "#loading" ).fadeOut(500, function() {
+        // fadeOut complete. Remove the loading div
+        $( "#loading" ).remove(); //makes page more lightweight
+    });
+}
+
+function showLoading(obj) {
+    $('body').append('<div id="loading" style="display: none"><div class="loadingScreen"></div></div>');
+    $("#loading").fadeIn(200);
+}
+
+function hadoopChanged(checkbox) {
+    var multithreaded_checkbox = document.getElementById("multithreaded");
+    var hadoop_checkbox = document.getElementById("hadoop");
+    if (hadoop_checkbox.checked) {
+        multithreaded_checkbox.disabled = true;
+    }
+    else {
+        multithreaded_checkbox.disabled = false;
+    }
+}
+function multiChanged(checkbox) {
+    var multithreaded_checkbox = document.getElementById("multithreaded");
+    var hadoop_checkbox = document.getElementById("hadoop");
+    if (multithreaded_checkbox.checked) {
+        hadoop_checkbox.disabled = true;
+    }
+    else {
+        hadoop_checkbox.disabled = false;
+    }
+}
+                    </script>
+
+    </body>
+</html>
