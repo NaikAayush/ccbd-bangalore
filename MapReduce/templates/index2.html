@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+	<head>
+
+		<title>Green Bengaluru</title>
+
+		<!-- Meta Data -->
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="author" content="Erilisdesign.com">
+
+		<!-- CSS Global Compulsory -->
+		<link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+		<!-- <link rel="stylesheet" href="{{url_for('static',filename='css/yush.min.css')}}">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/yush.css')}}"> -->
+
+		<!-- CSS Implementing Plugins -->
+		<!-- <link rel="stylesheet" href="{{url_for('static',filename='css/ionicons.min.css')}}" type="text/css"> -->
+		<link rel="stylesheet" href="{{url_for('static',filename='css/animate.min.css')}}" type="text/css">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/flexslider.css')}}" type="text/css">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/magnific-popup.css')}}" type="text/css">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/vegas.min.css')}}" type="text/css">
+		<!-- <link rel="stylesheet" href="{{url_for('static',filename='css/jquery.mCustomScrollbar.min.css')}}"> -->
+		<link rel="stylesheet" href="{{url_for('static',filename='css/photoswipe/photoswipe.css')}}">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/photoswipe/default-skin/default-skin.css')}}">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/custom.css')}}">
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+
+		<!--[if lt IE 11]>
+			<link rel="stylesheet" type="text/css" href="css/ie.css">
+		<![endif]-->
+
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,300i,400,400i,700,700i" rel="stylesheet">
+
+		<!-- JS -->
+		<script type="text/javascript" src="{{url_for('static',filename='js/modernizr.js')}}"></script>
+
+	</head>
+	<body class="scrollbar-dark">
+
+		<div id="preloader">
+			<div id="loading-animation"></div>
+		</div>
+
+		<div class="main-container">
+
+			<!-- Main Header -->
+			<header class="main-header header-light header-mobile-light menu-dark menu-mobile-dark">
+				<div class="header-container">
+					<div class="header-content">
+						<div class="header-el">
+							<div class="topline"></div>
+							<div class="header-block brand-block">
+								<!-- Header Logo -->
+								<div class="logo-block">
+									<a class="header-logo load-content" href="#home">
+										<img src="{{url_for('static',filename='images/tree.png')}}" alt="" class="logo-light" />
+										<img src="{{url_for('static',filename='images/tree.png')}}" alt="" class="logo-dark" />
+									</a>
+								</div>
+								<button type="button" class="nav-toggle">
+									<span></span>
+								</button>
+							</div>
+							<!-- Header Nav -->
+							<nav class="header-block nav-block header-nav">
+								<ul class="nav">
+									<li class="active"><a href="{{url_for('index')}}" class="load-content">Home</a></li>
+									<li><a href="{{url_for('mapRed')}}">Data</a></li>
+									<li><a href="{{url_for('maps')}}">Maps</a></li>
+									<li><a href="#portfolio" class="load-content">About Us</a></li>
+									<!-- <li><a href="#contact" class="load-content">Contact</a></li> -->
+								</ul>
+							</nav>
+							<div class="bottomline"></div>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<div class="function-buttons style-light">
+
+				<!-- Close Block Button -->
+				<a href="#home" class="function-btn close-block load-content"><i class="ion-android-close"></i></a>
+
+				<!-- Back To Top Block Button -->
+				<a href="#" class="function-btn backtotop-block"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+
+			</div>
+
+			<!-- Global Overlay -->
+			<div class="global-overlay">
+				<div class="overlay">
+					<div class="overlay-wrapper">
+						<!-- Overlay Background -->
+						<div class="overlay-inner cover-background on-mobile" style="background-image: url('demo/video/marine.jpg');"></div>
+						<div class="overlay-inner overlay-video">
+							<div class="video-wrapper">
+								<video autoplay muted loop>
+									<!-- <source src="demo/video/work.webm" type="video/webm"> -->
+									<source src="{{url_for('static',filename='assets/drone1.mp4')}}" type="video/mp4">
+									<!-- <source src="demo/video/work.ogv" type="video/ogg"> -->
+								</video>
+							</div>
+						</div>
+						<div class="overlay-inner background-dark-5 opacity-0"></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Frame Overlay -->
+			<div class="overlay-frame">
+				<div class="of-top"></div>
+				<div class="of-bottom"></div>
+				<div class="of-right"></div>
+			</div>
+
+			<!-- Home Block -->
+			<div id="home" class="ed-homeblock">
+				<div class="homeblock-container">
+					<section class="section fullscreen-element sm-pt-180 sm-pb-180">
+						<div class="table-container">
+							<div class="table-content">
+								<div class="container-fluid">
+									<div class="row">
+										<div class="col-lg-11 col-lg-offset-1 col-md-12">
+											<div class="jumbotron" style="padding-left: 5%;padding-right: 5%; background-color:#0000008c">
+												<p class="font-italic" style="margin-bottom: 0px;text-align: center;">"To sit in the shade on a fine day and look upon verdure is the most perfect refreshment"</p>
+		                    <p class="font-italic" style="text-align: right;">- Jane Austen, "Mansfield Park"</p>
+										<!-- <div class="countdown animated onstart" data-animation="fadeInUp" data-animation-delay="300" data-countdown="2017/05/25 12:00:00"></div> -->
+										<h2 class="font-bold text-white" style=>Have you ever had an inner feeling,<br/> a desire to know about the expanse of greenery <br/>that our beautiful city encompasses?</h2>
+
+											<p class="lead text-white animated onstart" data-animation="fadeInUp" data-animation-delay="600">We have collected over<strong> 5,38,000</strong> satellite images of<strong> Bengaluru</strong> and using technologies like Geocoding and MapReduce, we present this pipeline which can find the greenest parts of Bengaluru.</p>
+											<div class="btn-group-alt animated onstart" data-animation="fadeInUp" data-animation-delay="900">
+												<a href="#subscribe-modal" class="btn btn-white open-popup-link">Know More</a>
+												<a href="{{url_for('mapRed')}}" class="btn btn-white btn-border">Continue</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					</section>
+
+				</div>
+			</div>
+
+		<!-- JS -->
+		<script type="text/javascript" src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/plugins.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/photoswipe.min.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/photoswipe-ui-default.min.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/photoswipe-main.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/main.js')}}"></script>
+
+	</body>
+</html>

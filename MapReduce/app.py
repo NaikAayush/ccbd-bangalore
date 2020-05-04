@@ -2,7 +2,7 @@ import os
 import time
 import subprocess
 import csv
-from flask import Flask, render_template, request, session, jsonify
+from flask import Flask, render_template, request, session, jsonify, redirect, url_for
 import pandas as pd
 import json
 
@@ -18,7 +18,7 @@ pincode_locality_mapper.set_index(0, inplace=True)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index2.html")
 
 @app.route("/mapred", methods=["GET", "POST"])
 def mapRed():
@@ -96,7 +96,7 @@ def mapRed():
         elif groupby=='locality':
             session['varx'] = 'locality'
             session['locality'] = locality
-        return render_template("mapRed.html",
+        return render_template("maprednew.html",
                                outputs=outputs,
                                green_percentage=str(green_percentage),
                                time_taken=time_taken,
@@ -104,12 +104,13 @@ def mapRed():
                                hadoop=hadoop,
                                groupby=groupby,
                                no_of_outputs=no_of_outputs)
-    return render_template("mapRed.html", outputs=None)
+    #return render_template("mapRed.html", outputs=None)
+    return render_template("maprednew.html", outputs=None)
 
 @app.route("/maps",methods=["GET", "POST"])
 def maps():
-    if request.method == "POST":
-        varx = session.get('varx', None)
+    varx = session.get('varx', None)
+    if varx:
         if varx == 'pincode':
             pincode = session.get('pincode', None)
             shape=[x for x in range(0,len(pincode))]
@@ -121,7 +122,7 @@ def maps():
                     shape[i]=j
                 for k in x['Display']:
                     display[i]=k
-            return render_template("maps.html",pincode=pincode,shape=shape,display=display,varx=varx,locality='')
+            return render_template("mapsnew.html",pincode=pincode,shape=shape,display=display,varx=varx,locality='')
 
         elif varx == 'locality':
             locality = session.get('locality', None)
@@ -134,8 +135,16 @@ def maps():
                     shape[i]=j
                 for k in x['Display']:
                     display[i]=k
-            return render_template("maps.html",locality=locality,shape=shape,display=display,varx=varx,pincode='')
-    return render_template("index.html", outputs=None)
+            return render_template("mapsnew.html",locality=locality,shape=shape,display=display,varx=varx,pincode='')
+    return redirect(url_for("new"))
+
+@app.route("/new",methods=["GET", "POST"])
+def new():
+    return render_template('index2.html')
+
+@app.route("/newx",methods=["GET", "POST"])
+def newx():
+    return render_template('NewMapRed.html')
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')

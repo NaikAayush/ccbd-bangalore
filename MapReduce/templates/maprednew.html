@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+	<head>
+
+		<title>Green Bengaluru</title>
+
+		<!-- Meta Data -->
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="author" content="Erilisdesign.com">
+
+		<!-- CSS Global Compulsory -->
+		<link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+		<!-- <link rel="stylesheet" href="{{url_for('static',filename='css/yush.min.css')}}">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/yush.css')}}"> -->
+
+		<!-- CSS Implementing Plugins -->
+		<!-- <link rel="stylesheet" href="{{url_for('static',filename='css/ionicons.min.css')}}" type="text/css"> -->
+		<link rel="stylesheet" href="{{url_for('static',filename='css/animate.min.css')}}" type="text/css">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/flexslider.css')}}" type="text/css">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/magnific-popup.css')}}" type="text/css">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/vegas.min.css')}}" type="text/css">
+		<!-- <link rel="stylesheet" href="{{url_for('static',filename='css/jquery.mCustomScrollbar.min.css')}}"> -->
+		<link rel="stylesheet" href="{{url_for('static',filename='css/photoswipe/photoswipe.css')}}">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/photoswipe/default-skin/default-skin.css')}}">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/custom.css')}}">
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+
+		<!--[if lt IE 11]>
+			<link rel="stylesheet" type="text/css" href="css/ie.css">
+		<![endif]-->
+
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,300i,400,400i,700,700i" rel="stylesheet">
+
+		<!-- JS -->
+		<script type="text/javascript" src="{{url_for('static',filename='js/modernizr.js')}}"></script>
+
+		<!-- Faviconss -->
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+	</head>
+	<body>
+
+		<div id="preloader">
+			<div id="loading-animation"></div>
+		</div>
+
+		<div class="main-container">
+
+			<!-- Main Header -->
+			<<header class="main-header header-light header-mobile-light menu-dark menu-mobile-dark">
+				<div class="header-container">
+					<div class="header-content">
+						<div class="header-el">
+							<div class="topline"></div>
+							<div class="header-block brand-block">
+								<!-- Header Logo -->
+								<div class="logo-block">
+									<a class="header-logo load-content" href="#home">
+										<img src="{{url_for('static',filename='images/tree.png')}}" alt="" class="logo-light" />
+										<img src="{{url_for('static',filename='images/tree.png')}}" alt="" class="logo-dark" />
+									</a>
+								</div>
+								<button type="button" class="nav-toggle">
+									<span></span>
+								</button>
+							</div>
+							<!-- Header Nav -->
+							<nav class="header-block nav-block header-nav">
+								<ul class="nav">
+                  <li><a href="{{url_for('index')}}">Home</a></li>
+                  <li class="active"><a href="{{url_for('mapRed')}}">Data</a></li>
+									<li><a href="{{url_for('maps')}}">Maps</a></li>
+									<li><a href="#portfolio" class="load-content">About Us</a></li>
+									<!-- <li><a href="#contact" class="load-content">Contact</a></li> -->
+								</ul>
+							</nav>
+							<div class="bottomline"></div>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<div class="function-buttons style-light">
+
+				<!-- Close Block Button -->
+				<a href="#home" class="function-btn close-block load-content"><i class="ion-android-close"></i></a>
+
+				<!-- Back To Top Block Button -->
+				<a href="#" class="function-btn backtotop-block"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+
+			</div>
+
+			<!-- Global Overlay -->
+			<div class="global-overlay zoom-onload">
+				<div class="overlay">
+					<div class="overlay-wrapper">
+						<!-- Overlay Background -->
+						<div class="overlay-inner cover-background" style="background-image: url('{{url_for('static',filename='images/forest.jpg')}}');"></div>
+
+						<div class="overlay-inner background-dark-5 opacity-20"></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Frame Overlay -->
+			<div class="overlay-frame">
+				<div class="of-top"></div>
+				<div class="of-bottom"></div>
+				<div class="of-right"></div>
+			</div>
+
+			<!-- Home Block -->
+
+
+			<!-- Side Block -->
+			<div class="ed-homeblock" style="overflow:scroll;">
+        <div class="jumbotron" style=" background-color:#0000008c;margin-bottom:0rem;min-height: 100vh;max-height: auto;padding-top:5px;">
+        <div class="center" style="background-image: url('{{url_for('static',filename='images/forest.jpg')}}');"></div>
+				<div class="sideblock-container">
+					<section id="about" class="section" style="padding:0px">
+              <!-- <div class="container">
+                  <a class="btn btn-outline-primary" href="/" role="button" style="margin: 10px">Go Back</a>
+              </div> -->
+              <div class="container" style="text-align: center;max-width: 500px;font-size: large;">
+                <br>
+                <br>
+              <h3 style="text-align: center;padding-top:20px">Please slide the bar to adjust the threshold percentage</h3>
+              <p style="text-align: center;">(Only those places with green cover more than the threshold will be shown)</p>
+              <div class="container" style="text-align: center;">
+                  <form action={{ url_for("mapRed") }} method="POST" onsubmit="showLoading()" style="margin-bottom:0;">
+                      <input type="range" class="custom-range" id="customRange1" name="green_percentage" value={{ green_percentage or "50.0"  }} step="0.1" min="0.0" max="100">
+                      <div style="display: flex;">
+                          <span id="printVal" style="position: relative; font-size: initial; bottom: 10px;">{{ (green_percentage or "50.0") + "%"  }}</span>
+                      </div>
+
+                      <input id="multithreaded" type="checkbox" {{ "checked" if multithreaded }} name="multithreaded" value="Yes" style="padding-left: 10%;" onclick="multiChanged(this)">
+                      <label for="multithreaded" style="margin-right: 20px;">Multithreaded</label>
+                      <input id="hadoop" type="checkbox" {{ "checked" if hadoop }} name="hadoop" value="Yes" style="padding-left: 10%;" onclick="hadoopChanged(this)">
+                      <label for="hadoop">Use Hadoop</label>
+                        <label for="groupby" style="margin-bottom: 0px;">Group By:</label>
+                        <select class="form-control" name="groupby" id="groupby" style='background: #FFFFFF;color: #111;'>
+                            <option value="pincode" {{ "selected" if groupby and groupby=="pincode" }}>Pincode</option>
+                            <option value="locality" {{ "selected" if groupby and groupby=="locality" }}>Locality</option>
+                        </select>
+                      <input type="submit" value="Submit" class="btn btn-primary">
+                  </form>
+                  <br/>
+                  {% if outputs != None %}
+                  <form action={{ url_for("maps") }} method="POST" onsubmit="showLoading()">
+                    <input type="submit" value="Click to Visualize" class="btn btn-primary">
+                  </form>
+                  {% endif %}
+
+              </div>
+              </div>
+              {% if time_taken %}
+              <p style="text-align: center; margin-bottom: 0px; font-family: courier;">Time taken to execute Map Reduce: <b>{{ time_taken }}</b> seconds<p></p>
+              {% endif %}
+
+              {% if outputs != None %}
+
+              <!-- <div class="container"> -->
+              <div class="table-wrapper-scroll-y my-custom-scrollbar">
+              <table border class="table table-responsive-sm table-sm table-dark table-hover table-striped">
+                  <tr>
+                      <th>Pincode</th>
+                      <th>Sub-district</th>
+                      <th>District</th>
+                      <th>Green Percentage</th>
+                  </tr>
+                  {% for row in outputs %}
+                  <tr>
+                      <!--<td rowspan={{ row[1] | length }}><a href="/maps/{{ row[0] }}">{{ row[0] }}</a></td>-->
+                      <td rowspan={{ row[1] | length }}>{{ row[0] }}</a></td>
+                      <td>{{ row[1][0][0] }}</td>
+                      <td>{{ row[1][0][1] }}</td>
+                      <td rowspan={{ row[1] | length }}>{{ row[2] }}</td>
+                  </tr>
+                      {% for locality in row[1][1:] %}
+                      <tr>
+                      <td>{{ locality[0] }}</td>
+                      <td>{{ locality[1] }}</td>
+                      </tr>
+                      {% endfor %}
+                  {% endfor %}
+              </table>
+              </div>
+              {% endif %}
+						</div>
+					</section>
+
+
+		</div>
+
+		<!-- JS -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+    <script type="text/javascript" src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/plugins.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/photoswipe.min.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/photoswipe-ui-default.min.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/photoswipe-main.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/main.js')}}"></script>
+    <script>
+        $('#printVal').html($('#customRange1').val() + "%");
+        $('#printVal').css("left", parseInt($('#customRange1').val()) - parseInt($('#customRange1').val())/20 + "%");
+        $(document).on('input', '#customRange1', function() {
+            if($(this).val!=NaN){
+                $('#printVal').html( $(this).val() + "%" );
+                $('#printVal').css("left", parseInt($(this).val()) - parseInt($(this).val())/20 + "%");
+            }
+            else{
+                $('#printVal').html("50.0%");
+                $('#printVal').css("left", "50%");
+            }
+        });
+        $('body').append('<div id="loading"><div class="loadingScreen"></div></div>');
+        $(window).on('load', function(){
+            setTimeout(removeLoader, 100); //wait for page load PLUS 10 microseconds.
+        });
+        function removeLoader(){
+            $( "#loading" ).fadeOut(500, function() {
+            // fadeOut complete. Remove the loading div
+            $( "#loading" ).remove(); //makes page more lightweight
+        });
+        }
+
+        function showLoading(obj) {
+            $('body').append('<div id="loading"><div class="loadingScreen"></div></div>');
+        }
+
+        function hadoopChanged(checkbox) {
+            var multithreaded_checkbox = document.getElementById("multithreaded");
+            var hadoop_checkbox = document.getElementById("hadoop");
+            if (hadoop_checkbox.checked) {
+                multithreaded_checkbox.disabled = true;
+            }
+            else {
+                multithreaded_checkbox.disabled = false;
+            }
+        }
+        function multiChanged(checkbox) {
+            var multithreaded_checkbox = document.getElementById("multithreaded");
+            var hadoop_checkbox = document.getElementById("hadoop");
+            if (multithreaded_checkbox.checked) {
+                hadoop_checkbox.disabled = true;
+            }
+            else {
+                hadoop_checkbox.disabled = false;
+            }
+        }
+    </script>
+
+	</body>
+</html>

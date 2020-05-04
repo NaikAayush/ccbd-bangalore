@@ -10,7 +10,7 @@
     <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
 
 </head>
-<body>   
+<body>
     <div class="homePage">
         <video autoplay muted loop id="myVideo">
             <source src="{{url_for('static',filename='assets/back.mp4')}}" type="video/mp4">
@@ -44,7 +44,7 @@
         function removeLoader(){
             $( "#loading" ).fadeOut(500, function() {
             // fadeOut complete. Remove the loading div
-            $( "#loading" ).remove(); //makes page more lightweight 
+            $( "#loading" ).remove(); //makes page more lightweight
         });
         }
     </script>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+	<head>
+
+		<title>Green Bengaluru</title>
+
+		<!-- Meta Data -->
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="author" content="Erilisdesign.com">
+
+		<!-- CSS Global Compulsory -->
+		<link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+		<!-- <link rel="stylesheet" href="{{url_for('static',filename='css/yush.min.css')}}">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/yush.css')}}"> -->
+
+		<!-- CSS Implementing Plugins -->
+		<!-- <link rel="stylesheet" href="{{url_for('static',filename='css/ionicons.min.css')}}" type="text/css"> -->
+		<link rel="stylesheet" href="{{url_for('static',filename='css/animate.min.css')}}" type="text/css">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/flexslider.css')}}" type="text/css">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/magnific-popup.css')}}" type="text/css">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/vegas.min.css')}}" type="text/css">
+		<!-- <link rel="stylesheet" href="{{url_for('static',filename='css/jquery.mCustomScrollbar.min.css')}}"> -->
+		<link rel="stylesheet" href="{{url_for('static',filename='css/photoswipe/photoswipe.css')}}">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/photoswipe/default-skin/default-skin.css')}}">
+		<link rel="stylesheet" href="{{url_for('static',filename='css/custom.css')}}">
+    <!-- <link rel="stylesheet" type="text/css" href="../static/css/maps.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/map_styles.css" /> -->
+    <link rel="stylesheet" type="text/css" href="../static/css/maptemplate.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/mapred.css')}}">
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+
+		<!--[if lt IE 11]>
+			<link rel="stylesheet" type="text/css" href="css/ie.css">
+		<![endif]-->
+
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,300i,400,400i,700,700i" rel="stylesheet">
+
+		<!-- JS -->
+		<script type="text/javascript" src="{{url_for('static',filename='js/modernizr.js')}}"></script>
+
+		<!-- Faviconss -->
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+	</head>
+	<body class="scrollbar-dark">
+
+		<div id="preloader">
+			<div id="loading-animation"></div>
+		</div>
+
+		<div class="main-container">
+
+			<!-- Main Header -->
+			<<header class="main-header header-light header-mobile-light menu-dark menu-mobile-dark">
+				<div class="header-container">
+					<div class="header-content">
+						<div class="header-el">
+							<div class="topline"></div>
+							<div class="header-block brand-block">
+								<!-- Header Logo -->
+								<div class="logo-block">
+									<a class="header-logo load-content" href="#home">
+										<img src="{{url_for('static',filename='images/tree.png')}}" alt="" class="logo-light" />
+										<img src="{{url_for('static',filename='images/tree.png')}}" alt="" class="logo-dark" />
+									</a>
+								</div>
+								<button type="button" class="nav-toggle">
+									<span></span>
+								</button>
+							</div>
+							<!-- Header Nav -->
+							<nav class="header-block nav-block header-nav">
+								<ul class="nav">
+									<li><a href="{{url_for('index')}}">Home</a></li>
+									<li><a href="{{url_for('mapRed')}}">Data</a></li>
+                  <li class="active"><a href="{{url_for('maps')}}">Maps</a></li>
+									<li><a href="#portfolio" class="load-content">About Us</a></li>
+									<!-- <li><a href="#contact" class="load-content">Contact</a></li> -->
+								</ul>
+							</nav>
+							<div class="bottomline"></div>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<div class="function-buttons style-light">
+
+				<!-- Close Block Button -->
+				<a href="#home" class="function-btn close-block load-content"><i class="ion-android-close"></i></a>
+
+				<!-- Back To Top Block Button -->
+				<a href="#" class="function-btn backtotop-block"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+
+			</div>
+
+			<!-- Global Overlay -->
+			<div class="global-overlay zoom-onload">
+				<div class="overlay">
+					<div class="overlay-wrapper">
+						<!-- Overlay Background -->
+						<div class="overlay-inner cover-background" style="background-image: url('{{url_for('static',filename='images/forest.jpg')}}');"></div>
+						<div class="overlay-inner background-dark-5 opacity-20"></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Frame Overlay -->
+			<div class="overlay-frame">
+				<div class="of-top"></div>
+				<div class="of-bottom"></div>
+				<div class="of-right"></div>
+			</div>
+
+			<!-- Home Block -->
+
+
+			<!-- Side Block -->
+			<div class="ed-homeblock">
+        <div class="jumbotron" style=" background-color:#0000008c;margin-bottom:0rem;">
+        <div class="center" style="background-image: url('{{url_for('static',filename='images/forest.jpg')}}');"></div>
+				<div class="homeblock-container">
+            <!-- <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script> -->
+            <link rel="stylesheet" type="text/css" href="../static/css/maptemplate.css" />
+            <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+            <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+            <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+            <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+
+            <div style="height:800px" id="map"></div>
+        <script>
+        var varx= {{ varx | tojson }};
+        if(varx=='pincode'){
+          var pincode={{  pincode  |  tojson  }};
+          var shapex={{ shape  |  tojson  }}
+        }
+        else {
+          var locality={{  locality  |  tojson  }};
+          var shapex={{ shape  |  tojson  }}
+        }
+        </script>
+            <script type="text/javascript" src="{{ url_for('static',filename='/js/newmap.js')  }}"></script>
+          </body>
+		</div>
+    </div>
+    </div>
+
+		<!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/plugins.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/photoswipe.min.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/photoswipe-ui-default.min.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/photoswipe-main.js')}}"></script>
+		<script type="text/javascript" src="{{url_for('static',filename='js/main.js')}}"></script>
+	</body>
+</html>
