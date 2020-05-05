@@ -140,9 +140,9 @@
               <p style="text-align: center;">(Only those places with green cover more than the threshold will be shown)</p>
               <div class="container" style="text-align: center;">
                   <form action={{ url_for("mapRed") }} method="POST" onsubmit="showLoading()" style="margin-bottom:0;">
-                      <input type="range" class="custom-range" id="customRange1" name="green_percentage" value={{ green_percentage or "50.0"  }} step="0.1" min="0.0" max="100">
+                      <input type="range" class="custom-range" id="customRange1" name="green_percentage" value={{ green_percentage or "60.0"  }} step="0.1" min="0.0" max="100">
                       <div style="display: flex;">
-                          <span id="printVal" style="position: relative; font-size: initial; bottom: 10px;">{{ (green_percentage or "50.0") + "%"  }}</span>
+                          <span id="printVal" style="position: relative; font-size: initial; bottom: 10px;">{{ (green_percentage or "60.0") + "%"  }}</span>
                       </div>
 
                       <input id="multithreaded" type="checkbox" {{ "checked" if multithreaded }} name="multithreaded" value="Yes" style="padding-left: 10%;" onclick="multiChanged(this)">
@@ -151,8 +151,8 @@
                       <label for="hadoop">Use Hadoop</label>
                         <label for="groupby" style="margin-bottom: 0px;">Group By:</label>
                         <select class="form-control" name="groupby" id="groupby" style='background: #FFFFFF;color: #111;'>
-                            <option value="pincode" {{ "selected" if groupby and groupby=="pincode" }}>Pincode</option>
                             <option value="locality" {{ "selected" if groupby and groupby=="locality" }}>Locality</option>
+                            <option value="pincode" {{ "selected" if groupby and groupby=="pincode" }}>Pincode</option>
                         </select>
                       <input type="submit" value="Submit" class="btn btn-primary">
                   </form>
@@ -222,8 +222,8 @@
                 $('#printVal').css("left", parseInt($(this).val()) - parseInt($(this).val())/20 + "%");
             }
             else{
-                $('#printVal').html("50.0%");
-                $('#printVal').css("left", "50%");
+                $('#printVal').html("60.0%");
+                $('#printVal').css("left", "60%");
             }
         });
 
