@@ -21,17 +21,13 @@ def run_reduce_task(green_threshold, inp_file, out_file, separator="| "):
         pincode_locality, green = inp.split(separator)
         green = float(green)
         if current_location == pincode_locality:
-            # print("Rolling average for {}: ({} + {})/2".format(pincode_locality, current_green, green), file=sys.stderr)
             current_green += green
             current_count += 1
-            # print("increasing count:", current_count, file=sys.stderr)
         else:
-            # print("Inside else:", current_location, current_green, green_threshold)
             if current_location:
                 green_percentage = current_green/current_count
                 if green_percentage > green_threshold:
                     print("{}| {}".format(current_location, green_percentage), file=outfile)
-                    # print("Writing to file:", outfile, file=sys.stderr)
                     outfile.flush()
             current_location = pincode_locality
             current_green = green
@@ -50,11 +46,7 @@ def run_reduce_task(green_threshold, inp_file, out_file, separator="| "):
         if green_percentage > green_threshold:
             print("{}| {}".format(current_location, green_percentage), file=out_file)
             out_file.flush()
-    # print("Processed {} rows in process {}".format(total_count,
-                                                   # multiprocessing.current_process().name),
-          # file=sys.stderr)
     out_file.flush()
-    # print("Flushed to file:", out_file, file=sys.stderr)
     if file_opened_here:
         out_file.close()
 

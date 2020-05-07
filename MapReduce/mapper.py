@@ -20,7 +20,6 @@ def run_map_task(inp_file, out_file, groupby_pincode=True):
         pincode = row[6]
         return "{},{},{}| {}".format(pincode, loc1, loc2, green)
     reader = csv.reader(inp_file, delimiter=",", quotechar='"')
-    # print("Processing in process:", multiprocessing.current_process().name)
     if groupby_pincode:
         map_task = map_task_pincode
     else:
@@ -39,7 +38,6 @@ def run_map_task_multi(inp_filename, num_files, out_file_prefix, groupby_pincode
     out_files = [open(filename, "w", encoding="utf8") for filename in out_filenames]
     jobs = []
     for in_file, out_file in zip(in_files, out_files):
-        # print("Starting process for input {}, output {}".format(in_file, out_file))
         p = multiprocessing.Process(target=run_map_task, args=(in_file, out_file, groupby_pincode))
         p.start()
         jobs.append(p)
