@@ -2,7 +2,7 @@
 
 The objective was to find the greenest part of Bengaluru using satellite images
 
-Website: https://ccbd-bangalore.herokuapp.com/
+Website: http://ccbd-bangalore.herokuapp.com/
 
 ## The Team
 
